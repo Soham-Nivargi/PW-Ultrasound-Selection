@@ -21,7 +21,7 @@ addpath(genpath('../src'));
 addpath(genpath('tools'));
 
 %-- Input Parameters
-K = 2;                      %-- Number of images to be selected for reconstruction
+K = 9;                      %-- Number of images to be selected for reconstruction
 init_set = 38;
                              %-- Initial set of images to start with
 
@@ -69,7 +69,7 @@ end
 path_dataset = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_dataset_',data,'.hdf5'];
 path_scan = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_scan.hdf5'];
 path_phantom = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_phantom.hdf5'];
-path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/greedy_selection_sorted_',phantom,'_',acqui,'_img_from_',data,'_K_',num2str(K),'.hdf5'];
+path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/greedy_selection_sorted_left_top_',phantom,'_',acqui,'_img_from_',data,'_K_',num2str(K),'.hdf5'];
 
 
 %-- Read the corresponding dataset and the region where to reconstruct the image
@@ -111,7 +111,7 @@ pw_indices{1} = pw;
 disp(['Starting image reconstruction from ',acquisition,' for ',phantom,' using ',data,' dataset'])
 switch data_type    
     case 1
-        image = das_iq(scan,dataset,pw_indices);
+        image = das_iq_original(scan,dataset,pw_indices);
     case 2
         image = das_rf(scan,dataset,pw_indices);
     otherwise       %-- Do deal with bad values

@@ -1,0 +1,193 @@
+%-- Script to be used as an example to evaluate the quality of the reconstructed images
+
+%-- After choosing the specific configuration through acquisition_type, 
+%-- phantom_type, data_type and flag_display parameters, this script allows computing the 
+%-- chosen evaluation metrics.
+
+%-- By default, the computed metrics are saved in a text file in the folder named "evaluation"
+
+%-- Authors: Olivier Bernard (olivier.bernard@creatis.insa-lyon.fr)
+%--          Alfonso Rodriguez-Molares (alfonso.r.molares@ntnu.no)
+
+%-- $Date: 2016/03/01 $  
+
+
+clear all;
+close all;
+clc;
+addpath(genpath('../src'));
+
+
+%-- Parameters
+acquisition_type = 1;       %-- 1 = simulation || 2 = experiments
+phantom_type = 2;           %-- 1 = resolution & distorsion || 2 = contrast & speckle quality
+data_type = 1;              %-- 1 = IQ || 2 = RF
+flag_display = 0;           %-- 0 = do not display || 1 = display intermediate results
+
+K = 5;
+
+%-- Parse parameter choices
+switch acquisition_type    
+    case 1
+        acquisition = 'simulation';
+        acqui = 'simu';
+        flag_simu = 1;
+    case 2
+        acquisition = 'experiments';
+        acqui = 'expe';
+        flag_simu = 0;
+    otherwise       %-- Do deal with bad values
+        acquisition = 'simulation';
+        acqui = 'simu';
+        flag_simu = 1;
+end
+switch phantom_type    
+    case 1	%-- evaluating resolution and distorsion
+        phantom = 'resolution_distorsion';
+    case 2	%-- evaluating contrast and speckle quality
+        phantom = 'contrast_speckle';
+    otherwise       %-- Do deal with bad values
+        phantom = 'resolution';
+end
+switch data_type    
+    case 1
+        data = 'iq';
+    case 2
+        data = 'rf';
+    otherwise       %-- Do deal with bad values
+        data = 'iq';        
+end
+
+
+%-- Create path to load corresponding files
+path_scan = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_scan.hdf5'];
+path_phantom = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_phantom.hdf5'];
+% path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/single_image','/single_image_',phantom,'_',acqui,'_img_from_',data,'_75','.hdf5'];
+path_window_output_log = ['tukey_regionwise_2/trying_window_wala_image', '.txt'];
+path_unwindow_output_log = ['tukey_regionwise_2/trying_non_window_wala_image', '.txt'];
+windowed_path = ['tukey_regionwise_2/trying_half_window_wala_image', '.hdf5'];
+unwindowed_path = ['tukey_regionwise_2/trying_non_window_wala_image', '.hdf5'];
+% left_top = zeros(1, 75);
+% left_middle = zeros(1,75);
+% left_bottom = zeros(1,75);
+% 
+% middle_top = zeros(1, 75);
+% middle_middle = zeros(1,75);
+% middle_bottom = zeros(1,75);
+% 
+% right_top = zeros(1, 75);
+% right_middle = zeros(1,75);
+% right_bottom = zeros(1,75);
+
+% for i = 1:75
+%     if i==38
+%         continue;
+%     end
+
+    % path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/double_image','/double_image_',phantom,'_',acqui,'_img_from_',data,'_',num2str(i),'.hdf5'];
+    
+    %-- Perform evaluation for resolution
+    disp(['Starting evaluation from ',acquisition,' for ',phantom,' using ',data,' dataset'])
+    
+    %-- Pass online string instances
+    flag_simu = num2str(flag_simu);
+    flag_display = num2str(flag_display);
+    switch phantom_type    
+        case 1 	%-- evaluating resolution and distorsion
+            tools.exec_evaluation_resolution_distorsion(path_scan,path_phantom,windowed_path,flag_simu,flag_display,path_window_output_log);
+        case 2 	%-- evaluating contrast and speckle quality
+            % score_contrast = tools.value_contrast_ret(path_scan,path_phantom,path_reconstruted_img,flag_simu,flag_display,path_output_log);
+            tools.exec_evaluation_contrast_speckle(path_scan,path_phantom,windowed_path,flag_simu,flag_display,path_window_output_log);
+            tools.exec_evaluation_contrast_speckle(path_scan,path_phantom,unwindowed_path,flag_simu,flag_display,path_unwindow_output_log);
+            % disp(score_contrast);
+        otherwise       %-- Do deal with bad values
+            tools.exec_evaluation_resolution(path_scan,path_phantom,path_reconstruted_img,flag_simu,flag_display,path_output_log);
+    end
+    
+    % middle_top(i) = score_contrast(1);
+    % middle_middle(i) = score_contrast(2);
+    % middle_bottom(i) = score_contrast(3);
+    % 
+    % left_top(i) = score_contrast(4);
+    % left_middle(i) = score_contrast(5);
+    % left_bottom(i) = score_contrast(6);
+    % 
+    % right_top(i) = score_contrast(7);
+    % right_middle(i) = score_contrast(8);
+    % right_bottom(i) = score_contrast(9);
+
+    disp('Evaluation Done')
+    % disp(['Result saved in "',path_output_log,'"'])
+% end
+% left_top(38) = sum(left_top)/74;
+% left_middle(38) = sum(left_middle)/74;
+% left_bottom(38) = sum(left_bottom)/74;
+% middle_top(38) = sum(middle_top)/74;
+% middle_middle(38) = sum(middle_middle)/74;
+% middle_bottom(38) = sum(middle_bottom)/74;
+% right_top(38) = sum(right_top)/74;
+% right_middle(38) = sum(right_middle)/74;
+% right_bottom(38) = sum(right_bottom)/74;
+% 
+% figure();
+% plot(left_top);
+% xlabel('PW Index');
+% ylabel('CNR');
+% title('left top');
+% saveas(gcf, 'double/left_top.jpg');
+% 
+% figure();
+% plot(left_middle);
+% xlabel('PW Index');
+% ylabel('CNR');
+% title('left middle');
+% saveas(gcf, 'double/left_middle.jpg');
+% 
+% figure();
+% plot(left_bottom);
+% xlabel('PW Index');
+% ylabel('CNR');
+% title('left bottom');
+% saveas(gcf, 'double/left_bottom.jpg');
+% 
+% figure();
+% plot(middle_top);
+% xlabel('PW Index');
+% ylabel('CNR');
+% title('middle top');
+% saveas(gcf, 'double/middle_top.jpg');
+% 
+% figure();
+% plot(middle_middle);
+% xlabel('PW Index');
+% ylabel('CNR');
+% title('middle middle');
+% saveas(gcf, 'double/middle_middle.jpg');
+% 
+% figure();
+% plot(middle_bottom);
+% xlabel('PW Index');
+% ylabel('CNR');
+% title('middle bottom');
+% saveas(gcf, 'double/middle_bottom.jpg');
+% 
+% figure();
+% plot(right_top);
+% xlabel('PW Index');
+% ylabel('CNR');
+% title('right top');
+% saveas(gcf, 'double/right_top.jpg');
+% 
+% figure();
+% plot(right_middle);
+% xlabel('PW Index');
+% ylabel('CNR');
+% title('right middle');
+% saveas(gcf, 'double/right_middle.jpg');
+% 
+% figure();
+% plot(right_bottom);
+% xlabel('PW Index');
+% ylabel('CNR');
+% title('right bottom');
+% saveas(gcf, 'double/right_bottom.jpg');

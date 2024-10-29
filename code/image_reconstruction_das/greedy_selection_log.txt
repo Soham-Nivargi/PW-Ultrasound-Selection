@@ -1,1 +1,1153 @@
-Selecting image 2Candidate set: 1  38Current Score: 8.3333Candidate set: 2  38Current Score: 8.5Candidate set: 3  38Current Score: 8.6444Candidate set: 4  38Current Score: 8.7222Candidate set: 5  38Current Score: 8.8667Candidate set: 6  38Current Score: 8.9222Candidate set: 7  38Current Score: 9.0778Candidate set: 8  38Current Score: 9.1667Candidate set: 9  38Current Score: 9.3889Candidate set: 10  38Current Score: 9.4444Candidate set: 11  38Current Score: 9.4556Candidate set: 12  38Current Score: 9.5556Candidate set: 13  38Current Score: 9.5778Candidate set: 14  38Current Score: 9.6889Candidate set: 15  38Current Score: 9.8111Candidate set: 16  38Current Score: 9.8667Candidate set: 17  38Current Score: 9.9333Candidate set: 18  38Current Score: 10.2Candidate set: 19  38Current Score: 10.2Candidate set: 20  38Current Score: 10.3Candidate set: 21  38Current Score: 10.4Candidate set: 22  38Current Score: 10.4222Candidate set: 23  38Current Score: 10.6667Candidate set: 24  38Current Score: 10.6889Candidate set: 25  38Current Score: 10.8556Candidate set: 26  38Current Score: 10.8889Candidate set: 27  38Current Score: 10.9889Candidate set: 28  38Current Score: 11.0667Candidate set: 29  38Current Score: 11.1778Candidate set: 30  38Current Score: 11.1111Candidate set: 31  38Current Score: 11.0667Candidate set: 32  38Current Score: 10.8444Candidate set: 33  38Current Score: 10.8444Candidate set: 34  38Current Score: 10.5111Candidate set: 35  38Current Score: 10.6778Candidate set: 36  38Current Score: 10.1222Candidate set: 37  38Current Score: 10.3778Candidate set: 38  39Current Score: 10.3444Candidate set: 38  40Current Score: 10.0222Candidate set: 38  41Current Score: 10.5222Candidate set: 38  42Current Score: 10.4556Candidate set: 38  43Current Score: 10.7333Candidate set: 38  44Current Score: 10.8222Candidate set: 38  45Current Score: 11.0333Candidate set: 38  46Current Score: 11.1556Candidate set: 38  47Current Score: 11.1222Candidate set: 38  48Current Score: 11.1111Candidate set: 38  49Current Score: 11.0778Candidate set: 38  50Current Score: 10.9333Candidate set: 38  51Current Score: 10.8667Candidate set: 38  52Current Score: 10.7Candidate set: 38  53Current Score: 10.6222Candidate set: 38  54Current Score: 10.5222Candidate set: 38  55Current Score: 10.4444Candidate set: 38  56Current Score: 10.4Candidate set: 38  57Current Score: 10.3111Candidate set: 38  58Current Score: 10.1667Candidate set: 38  59Current Score: 10.1444Candidate set: 38  60Current Score: 10.0444Candidate set: 38  61Current Score: 9.9333Candidate set: 38  62Current Score: 9.8444Candidate set: 38  63Current Score: 9.7Candidate set: 38  64Current Score: 9.7222Candidate set: 38  65Current Score: 9.5111Candidate set: 38  66Current Score: 9.4556Candidate set: 38  67Current Score: 9.3Candidate set: 38  68Current Score: 9.3111Candidate set: 38  69Current Score: 9.1333Candidate set: 38  70Current Score: 9.1111Candidate set: 38  71Current Score: 8.9778Candidate set: 38  72Current Score: 8.7889Candidate set: 38  73Current Score: 8.7333Candidate set: 38  74Current Score: 8.5667Candidate set: 38  75Current Score: 8.4889Current image selected: 29Current set: 29  38Greedy selection completed
+Selecting image 2
+Candidate set: 1  38
+Current Score: 8.6556
+Candidate set: 2  38
+Current Score: 8.8111
+Candidate set: 3  38
+Current Score: 8.9444
+Candidate set: 4  38
+Current Score: 9.1889
+Candidate set: 5  38
+Current Score: 9.2889
+Candidate set: 6  38
+Current Score: 9.3778
+Candidate set: 7  38
+Current Score: 9.4889
+Candidate set: 8  38
+Current Score: 9.7
+Candidate set: 9  38
+Current Score: 9.8111
+Candidate set: 10  38
+Current Score: 9.9556
+Candidate set: 11  38
+Current Score: 9.9444
+Candidate set: 12  38
+Current Score: 10.0333
+Candidate set: 13  38
+Current Score: 10.1333
+Candidate set: 14  38
+Current Score: 10.3
+Candidate set: 15  38
+Current Score: 10.4111
+Candidate set: 16  38
+Current Score: 10.5222
+Candidate set: 17  38
+Current Score: 10.6222
+Candidate set: 18  38
+Current Score: 10.9556
+Candidate set: 19  38
+Current Score: 10.9333
+Candidate set: 20  38
+Current Score: 11.1667
+Candidate set: 21  38
+Current Score: 11.2222
+Candidate set: 22  38
+Current Score: 11.3222
+Candidate set: 23  38
+Current Score: 11.4667
+Candidate set: 24  38
+Current Score: 11.5778
+Candidate set: 25  38
+Current Score: 11.5778
+Candidate set: 26  38
+Current Score: 11.5889
+Candidate set: 27  38
+Current Score: 11.5778
+Candidate set: 28  38
+Current Score: 11.6
+Candidate set: 29  38
+Current Score: 11.5667
+Candidate set: 30  38
+Current Score: 11.5444
+Candidate set: 31  38
+Current Score: 11.4333
+Candidate set: 32  38
+Current Score: 11.3556
+Candidate set: 33  38
+Current Score: 11.2333
+Candidate set: 34  38
+Current Score: 10.9444
+Candidate set: 35  38
+Current Score: 11.1778
+Candidate set: 36  38
+Current Score: 10.7333
+Candidate set: 37  38
+Current Score: 11.0222
+Candidate set: 38  39
+Current Score: 11.0111
+Candidate set: 38  40
+Current Score: 10.7333
+Candidate set: 38  41
+Current Score: 11.1222
+Candidate set: 38  42
+Current Score: 10.9778
+Candidate set: 38  43
+Current Score: 11.2556
+Candidate set: 38  44
+Current Score: 11.3
+Candidate set: 38  45
+Current Score: 11.4889
+Candidate set: 38  46
+Current Score: 11.4556
+Candidate set: 38  47
+Current Score: 11.5111
+Candidate set: 38  48
+Current Score: 11.5556
+Candidate set: 38  49
+Current Score: 11.6444
+Candidate set: 38  50
+Current Score: 11.5556
+Candidate set: 38  51
+Current Score: 11.5778
+Candidate set: 38  52
+Current Score: 11.5222
+Candidate set: 38  53
+Current Score: 11.4222
+Candidate set: 38  54
+Current Score: 11.3667
+Candidate set: 38  55
+Current Score: 11.3333
+Candidate set: 38  56
+Current Score: 11.1889
+Candidate set: 38  57
+Current Score: 11.1
+Candidate set: 38  58
+Current Score: 10.8556
+Candidate set: 38  59
+Current Score: 10.7889
+Candidate set: 38  60
+Current Score: 10.6222
+Candidate set: 38  61
+Current Score: 10.4667
+Candidate set: 38  62
+Current Score: 10.3556
+Candidate set: 38  63
+Current Score: 10.2222
+Candidate set: 38  64
+Current Score: 10.2
+Candidate set: 38  65
+Current Score: 10.0111
+Candidate set: 38  66
+Current Score: 9.9333
+Candidate set: 38  67
+Current Score: 9.7111
+Candidate set: 38  68
+Current Score: 9.7222
+Candidate set: 38  69
+Current Score: 9.6
+Candidate set: 38  70
+Current Score: 9.4778
+Candidate set: 38  71
+Current Score: 9.3778
+Candidate set: 38  72
+Current Score: 9.1333
+Candidate set: 38  73
+Current Score: 9.1111
+Candidate set: 38  74
+Current Score: 8.9444
+Candidate set: 38  75
+Current Score: 8.8333
+Current image selected: 49
+Current set: 38  49
+Selecting image 3
+Candidate set: 1  38  49
+Current Score: 10.1778
+Candidate set: 2  38  49
+Current Score: 10.2556
+Candidate set: 3  38  49
+Current Score: 10.3222
+Candidate set: 4  38  49
+Current Score: 10.4556
+Candidate set: 5  38  49
+Current Score: 10.5111
+Candidate set: 6  38  49
+Current Score: 10.6
+Candidate set: 7  38  49
+Current Score: 10.6556
+Candidate set: 8  38  49
+Current Score: 10.7444
+Candidate set: 9  38  49
+Current Score: 10.8444
+Candidate set: 10  38  49
+Current Score: 10.9667
+Candidate set: 11  38  49
+Current Score: 11
+Candidate set: 12  38  49
+Current Score: 11
+Candidate set: 13  38  49
+Current Score: 11.0667
+Candidate set: 14  38  49
+Current Score: 11.1667
+Candidate set: 15  38  49
+Current Score: 11.3111
+Candidate set: 16  38  49
+Current Score: 11.3556
+Candidate set: 17  38  49
+Current Score: 11.5
+Candidate set: 18  38  49
+Current Score: 11.6778
+Candidate set: 19  38  49
+Current Score: 11.7444
+Candidate set: 20  38  49
+Current Score: 11.8444
+Candidate set: 21  38  49
+Current Score: 11.9889
+Candidate set: 22  38  49
+Current Score: 12.0778
+Candidate set: 23  38  49
+Current Score: 12.2222
+Candidate set: 24  38  49
+Current Score: 12.3333
+Candidate set: 25  38  49
+Current Score: 12.3889
+Candidate set: 26  38  49
+Current Score: 12.4333
+Candidate set: 27  38  49
+Current Score: 12.4111
+Candidate set: 28  38  49
+Current Score: 12.4556
+Candidate set: 29  38  49
+Current Score: 12.5
+Candidate set: 30  38  49
+Current Score: 12.4667
+Candidate set: 31  38  49
+Current Score: 12.4444
+Candidate set: 32  38  49
+Current Score: 12.2667
+Candidate set: 33  38  49
+Current Score: 12.2778
+Candidate set: 34  38  49
+Current Score: 11.9778
+Candidate set: 35  38  49
+Current Score: 12.2111
+Candidate set: 36  38  49
+Current Score: 11.7889
+Candidate set: 37  38  49
+Current Score: 12.0556
+Candidate set: 38  39  49
+Current Score: 12.0333
+Candidate set: 38  40  49
+Current Score: 11.6889
+Candidate set: 38  41  49
+Current Score: 11.9444
+Candidate set: 38  42  49
+Current Score: 11.7778
+Candidate set: 38  43  49
+Current Score: 11.8222
+Candidate set: 38  44  49
+Current Score: 11.8
+Candidate set: 38  45  49
+Current Score: 11.8
+Candidate set: 38  46  49
+Current Score: 11.9
+Candidate set: 38  47  49
+Current Score: 11.5111
+Candidate set: 38  48  49
+Current Score: 11.9
+Candidate set: 38  49  50
+Current Score: 11.8667
+Candidate set: 38  49  51
+Current Score: 11.5111
+Candidate set: 38  49  52
+Current Score: 11.9333
+Candidate set: 38  49  53
+Current Score: 11.6444
+Candidate set: 38  49  54
+Current Score: 11.8889
+Candidate set: 38  49  55
+Current Score: 11.8
+Candidate set: 38  49  56
+Current Score: 11.9111
+Candidate set: 38  49  57
+Current Score: 11.9333
+Candidate set: 38  49  58
+Current Score: 11.8556
+Candidate set: 38  49  59
+Current Score: 11.8778
+Candidate set: 38  49  60
+Current Score: 11.7889
+Candidate set: 38  49  61
+Current Score: 11.7333
+Candidate set: 38  49  62
+Current Score: 11.6889
+Candidate set: 38  49  63
+Current Score: 11.6
+Candidate set: 38  49  64
+Current Score: 11.5889
+Candidate set: 38  49  65
+Current Score: 11.4333
+Candidate set: 38  49  66
+Current Score: 11.3111
+Candidate set: 38  49  67
+Current Score: 11.1111
+Candidate set: 38  49  68
+Current Score: 11.0889
+Candidate set: 38  49  69
+Current Score: 11.0111
+Candidate set: 38  49  70
+Current Score: 10.8889
+Candidate set: 38  49  71
+Current Score: 10.7556
+Candidate set: 38  49  72
+Current Score: 10.6333
+Candidate set: 38  49  73
+Current Score: 10.5667
+Candidate set: 38  49  74
+Current Score: 10.3778
+Candidate set: 38  49  75
+Current Score: 10.3222
+Current image selected: 29
+Current set: 29  38  49
+Selecting image 4
+Candidate set: 1  29  38  49
+Current Score: 11.2111
+Candidate set: 2  29  38  49
+Current Score: 11.2889
+Candidate set: 3  29  38  49
+Current Score: 11.3556
+Candidate set: 4  29  38  49
+Current Score: 11.4778
+Candidate set: 5  29  38  49
+Current Score: 11.5
+Candidate set: 6  29  38  49
+Current Score: 11.5667
+Candidate set: 7  29  38  49
+Current Score: 11.6556
+Candidate set: 8  29  38  49
+Current Score: 11.7667
+Candidate set: 9  29  38  49
+Current Score: 11.8667
+Candidate set: 10  29  38  49
+Current Score: 11.9889
+Candidate set: 11  29  38  49
+Current Score: 12.0444
+Candidate set: 12  29  38  49
+Current Score: 12.1111
+Candidate set: 13  29  38  49
+Current Score: 12.1667
+Candidate set: 14  29  38  49
+Current Score: 12.3222
+Candidate set: 15  29  38  49
+Current Score: 12.4222
+Candidate set: 16  29  38  49
+Current Score: 12.5444
+Candidate set: 17  29  38  49
+Current Score: 12.5444
+Candidate set: 18  29  38  49
+Current Score: 12.6333
+Candidate set: 19  29  38  49
+Current Score: 12.7111
+Candidate set: 20  29  38  49
+Current Score: 12.6778
+Candidate set: 21  29  38  49
+Current Score: 12.6667
+Candidate set: 22  29  38  49
+Current Score: 12.6333
+Candidate set: 23  29  38  49
+Current Score: 12.6111
+Candidate set: 24  29  38  49
+Current Score: 12.6111
+Candidate set: 25  29  38  49
+Current Score: 12.5
+Candidate set: 26  29  38  49
+Current Score: 12.6333
+Candidate set: 27  29  38  49
+Current Score: 12.3
+Candidate set: 28  29  38  49
+Current Score: 12.6111
+Candidate set: 29  30  38  49
+Current Score: 12.6333
+Candidate set: 29  31  38  49
+Current Score: 12.3444
+Candidate set: 29  32  38  49
+Current Score: 12.6444
+Candidate set: 29  33  38  49
+Current Score: 12.4556
+Candidate set: 29  34  38  49
+Current Score: 12.4222
+Candidate set: 29  35  38  49
+Current Score: 12.6444
+Candidate set: 29  36  38  49
+Current Score: 12.3556
+Candidate set: 29  37  38  49
+Current Score: 12.6222
+Candidate set: 29  38  39  49
+Current Score: 12.7556
+Candidate set: 29  38  40  49
+Current Score: 12.4222
+Candidate set: 29  38  41  49
+Current Score: 12.7667
+Candidate set: 29  38  42  49
+Current Score: 12.6444
+Candidate set: 29  38  43  49
+Current Score: 12.7667
+Candidate set: 29  38  44  49
+Current Score: 12.6333
+Candidate set: 29  38  45  49
+Current Score: 12.6333
+Candidate set: 29  38  46  49
+Current Score: 12.7111
+Candidate set: 29  38  47  49
+Current Score: 12.3889
+Candidate set: 29  38  48  49
+Current Score: 12.7
+Candidate set: 29  38  49  50
+Current Score: 12.6222
+Candidate set: 29  38  49  51
+Current Score: 12.3556
+Candidate set: 29  38  49  52
+Current Score: 12.6889
+Candidate set: 29  38  49  53
+Current Score: 12.4444
+Candidate set: 29  38  49  54
+Current Score: 12.5444
+Candidate set: 29  38  49  55
+Current Score: 12.5333
+Candidate set: 29  38  49  56
+Current Score: 12.5667
+Candidate set: 29  38  49  57
+Current Score: 12.5889
+Candidate set: 29  38  49  58
+Current Score: 12.5222
+Candidate set: 29  38  49  59
+Current Score: 12.5667
+Candidate set: 29  38  49  60
+Current Score: 12.4556
+Candidate set: 29  38  49  61
+Current Score: 12.3889
+Candidate set: 29  38  49  62
+Current Score: 12.3444
+Candidate set: 29  38  49  63
+Current Score: 12.2778
+Candidate set: 29  38  49  64
+Current Score: 12.2
+Candidate set: 29  38  49  65
+Current Score: 12.0889
+Candidate set: 29  38  49  66
+Current Score: 12
+Candidate set: 29  38  49  67
+Current Score: 11.8778
+Candidate set: 29  38  49  68
+Current Score: 11.8444
+Candidate set: 29  38  49  69
+Current Score: 11.8
+Candidate set: 29  38  49  70
+Current Score: 11.6667
+Candidate set: 29  38  49  71
+Current Score: 11.5667
+Candidate set: 29  38  49  72
+Current Score: 11.4444
+Candidate set: 29  38  49  73
+Current Score: 11.4222
+Candidate set: 29  38  49  74
+Current Score: 11.2889
+Candidate set: 29  38  49  75
+Current Score: 11.3
+Current image selected: 41
+Current set: 29  38  41  49
+Selecting image 5
+Candidate set: 1  29  38  41  49
+Current Score: 11.7889
+Candidate set: 2  29  38  41  49
+Current Score: 11.8667
+Candidate set: 3  29  38  41  49
+Current Score: 11.9
+Candidate set: 4  29  38  41  49
+Current Score: 11.9667
+Candidate set: 5  29  38  41  49
+Current Score: 12.0222
+Candidate set: 6  29  38  41  49
+Current Score: 12.0667
+Candidate set: 7  29  38  41  49
+Current Score: 12.1111
+Candidate set: 8  29  38  41  49
+Current Score: 12.2
+Candidate set: 9  29  38  41  49
+Current Score: 12.3
+Candidate set: 10  29  38  41  49
+Current Score: 12.3778
+Candidate set: 11  29  38  41  49
+Current Score: 12.4333
+Candidate set: 12  29  38  41  49
+Current Score: 12.5222
+Candidate set: 13  29  38  41  49
+Current Score: 12.5111
+Candidate set: 14  29  38  41  49
+Current Score: 12.6667
+Candidate set: 15  29  38  41  49
+Current Score: 12.7556
+Candidate set: 16  29  38  41  49
+Current Score: 12.7778
+Candidate set: 17  29  38  41  49
+Current Score: 12.8333
+Candidate set: 18  29  38  41  49
+Current Score: 12.9778
+Candidate set: 19  29  38  41  49
+Current Score: 13.0222
+Candidate set: 20  29  38  41  49
+Current Score: 13.0111
+Candidate set: 21  29  38  41  49
+Current Score: 13.1333
+Candidate set: 22  29  38  41  49
+Current Score: 13.1
+Candidate set: 23  29  38  41  49
+Current Score: 13.1222
+Candidate set: 24  29  38  41  49
+Current Score: 13.1444
+Candidate set: 25  29  38  41  49
+Current Score: 13.0667
+Candidate set: 26  29  38  41  49
+Current Score: 13.2111
+Candidate set: 27  29  38  41  49
+Current Score: 12.9222
+Candidate set: 28  29  38  41  49
+Current Score: 13.2556
+Candidate set: 29  30  38  41  49
+Current Score: 13.1778
+Candidate set: 29  31  38  41  49
+Current Score: 12.8556
+Candidate set: 29  32  38  41  49
+Current Score: 13.0667
+Candidate set: 29  33  38  41  49
+Current Score: 12.9
+Candidate set: 29  34  38  41  49
+Current Score: 12.7778
+Candidate set: 29  35  38  41  49
+Current Score: 12.8556
+Candidate set: 29  36  38  41  49
+Current Score: 12.6556
+Candidate set: 29  37  38  41  49
+Current Score: 12.7333
+Candidate set: 29  38  39  41  49
+Current Score: 12.6111
+Candidate set: 29  38  40  41  49
+Current Score: 12.6
+Candidate set: 29  38  41  42  49
+Current Score: 12.7667
+Candidate set: 29  38  41  43  49
+Current Score: 12.6222
+Candidate set: 29  38  41  44  49
+Current Score: 12.8
+Candidate set: 29  38  41  45  49
+Current Score: 12.7222
+Candidate set: 29  38  41  46  49
+Current Score: 12.8889
+Candidate set: 29  38  41  47  49
+Current Score: 12.7222
+Candidate set: 29  38  41  48  49
+Current Score: 12.9778
+Candidate set: 29  38  41  49  50
+Current Score: 13.0444
+Candidate set: 29  38  41  49  51
+Current Score: 12.8222
+Candidate set: 29  38  41  49  52
+Current Score: 13.1667
+Candidate set: 29  38  41  49  53
+Current Score: 13.0222
+Candidate set: 29  38  41  49  54
+Current Score: 13.1444
+Candidate set: 29  38  41  49  55
+Current Score: 13.1444
+Candidate set: 29  38  41  49  56
+Current Score: 13.1333
+Candidate set: 29  38  41  49  57
+Current Score: 13.1556
+Candidate set: 29  38  41  49  58
+Current Score: 13.1111
+Candidate set: 29  38  41  49  59
+Current Score: 13.0444
+Candidate set: 29  38  41  49  60
+Current Score: 12.9333
+Candidate set: 29  38  41  49  61
+Current Score: 12.8667
+Candidate set: 29  38  41  49  62
+Current Score: 12.8111
+Candidate set: 29  38  41  49  63
+Current Score: 12.6889
+Candidate set: 29  38  41  49  64
+Current Score: 12.6444
+Candidate set: 29  38  41  49  65
+Current Score: 12.5333
+Candidate set: 29  38  41  49  66
+Current Score: 12.4556
+Candidate set: 29  38  41  49  67
+Current Score: 12.3222
+Candidate set: 29  38  41  49  68
+Current Score: 12.2667
+Candidate set: 29  38  41  49  69
+Current Score: 12.2
+Candidate set: 29  38  41  49  70
+Current Score: 12.1222
+Candidate set: 29  38  41  49  71
+Current Score: 12.0556
+Candidate set: 29  38  41  49  72
+Current Score: 11.9667
+Candidate set: 29  38  41  49  73
+Current Score: 11.9778
+Candidate set: 29  38  41  49  74
+Current Score: 11.8111
+Candidate set: 29  38  41  49  75
+Current Score: 11.8222
+Current image selected: 28
+Current set: 28  29  38  41  49
+Selecting image 6
+Candidate set: 1  28  29  38  41  49
+Current Score: 12.2111
+Candidate set: 2  28  29  38  41  49
+Current Score: 12.3111
+Candidate set: 3  28  29  38  41  49
+Current Score: 12.3889
+Candidate set: 4  28  29  38  41  49
+Current Score: 12.4444
+Candidate set: 5  28  29  38  41  49
+Current Score: 12.5222
+Candidate set: 6  28  29  38  41  49
+Current Score: 12.5444
+Candidate set: 7  28  29  38  41  49
+Current Score: 12.6333
+Candidate set: 8  28  29  38  41  49
+Current Score: 12.7
+Candidate set: 9  28  29  38  41  49
+Current Score: 12.8444
+Candidate set: 10  28  29  38  41  49
+Current Score: 12.9556
+Candidate set: 11  28  29  38  41  49
+Current Score: 13.0667
+Candidate set: 12  28  29  38  41  49
+Current Score: 13.0778
+Candidate set: 13  28  29  38  41  49
+Current Score: 13.1667
+Candidate set: 14  28  29  38  41  49
+Current Score: 13.2444
+Candidate set: 15  28  29  38  41  49
+Current Score: 13.3667
+Candidate set: 16  28  29  38  41  49
+Current Score: 13.2778
+Candidate set: 17  28  29  38  41  49
+Current Score: 13.3778
+Candidate set: 18  28  29  38  41  49
+Current Score: 13.5
+Candidate set: 19  28  29  38  41  49
+Current Score: 13.4444
+Candidate set: 20  28  29  38  41  49
+Current Score: 13.4111
+Candidate set: 21  28  29  38  41  49
+Current Score: 13.3889
+Candidate set: 22  28  29  38  41  49
+Current Score: 13.2889
+Candidate set: 23  28  29  38  41  49
+Current Score: 13.3556
+Candidate set: 24  28  29  38  41  49
+Current Score: 13.2333
+Candidate set: 25  28  29  38  41  49
+Current Score: 13.2
+Candidate set: 26  28  29  38  41  49
+Current Score: 13.0889
+Candidate set: 27  28  29  38  41  49
+Current Score: 13.1
+Candidate set: 28  29  30  38  41  49
+Current Score: 13.0778
+Candidate set: 28  29  31  38  41  49
+Current Score: 13.0667
+Candidate set: 28  29  32  38  41  49
+Current Score: 13.1889
+Candidate set: 28  29  33  38  41  49
+Current Score: 13.1556
+Candidate set: 28  29  34  38  41  49
+Current Score: 13.1111
+Candidate set: 28  29  35  38  41  49
+Current Score: 13.2333
+Candidate set: 28  29  36  38  41  49
+Current Score: 13.0667
+Candidate set: 28  29  37  38  41  49
+Current Score: 13.1778
+Candidate set: 28  29  38  39  41  49
+Current Score: 13.0778
+Candidate set: 28  29  38  40  41  49
+Current Score: 13.1444
+Candidate set: 28  29  38  41  42  49
+Current Score: 13.3
+Candidate set: 28  29  38  41  43  49
+Current Score: 13.1778
+Candidate set: 28  29  38  41  44  49
+Current Score: 13.3
+Candidate set: 28  29  38  41  45  49
+Current Score: 13.2444
+Candidate set: 28  29  38  41  46  49
+Current Score: 13.3667
+Candidate set: 28  29  38  41  47  49
+Current Score: 13.1889
+Candidate set: 28  29  38  41  48  49
+Current Score: 13.4333
+Candidate set: 28  29  38  41  49  50
+Current Score: 13.4444
+Candidate set: 28  29  38  41  49  51
+Current Score: 13.2778
+Candidate set: 28  29  38  41  49  52
+Current Score: 13.5111
+Candidate set: 28  29  38  41  49  53
+Current Score: 13.4111
+Candidate set: 28  29  38  41  49  54
+Current Score: 13.5
+Candidate set: 28  29  38  41  49  55
+Current Score: 13.4667
+Candidate set: 28  29  38  41  49  56
+Current Score: 13.4556
+Candidate set: 28  29  38  41  49  57
+Current Score: 13.4556
+Candidate set: 28  29  38  41  49  58
+Current Score: 13.3556
+Candidate set: 28  29  38  41  49  59
+Current Score: 13.3667
+Candidate set: 28  29  38  41  49  60
+Current Score: 13.2333
+Candidate set: 28  29  38  41  49  61
+Current Score: 13.1333
+Candidate set: 28  29  38  41  49  62
+Current Score: 13.0778
+Candidate set: 28  29  38  41  49  63
+Current Score: 13.0222
+Candidate set: 28  29  38  41  49  64
+Current Score: 12.9444
+Candidate set: 28  29  38  41  49  65
+Current Score: 12.8
+Candidate set: 28  29  38  41  49  66
+Current Score: 12.7778
+Candidate set: 28  29  38  41  49  67
+Current Score: 12.6667
+Candidate set: 28  29  38  41  49  68
+Current Score: 12.6778
+Candidate set: 28  29  38  41  49  69
+Current Score: 12.6111
+Candidate set: 28  29  38  41  49  70
+Current Score: 12.5444
+Candidate set: 28  29  38  41  49  71
+Current Score: 12.4778
+Candidate set: 28  29  38  41  49  72
+Current Score: 12.4
+Candidate set: 28  29  38  41  49  73
+Current Score: 12.4222
+Candidate set: 28  29  38  41  49  74
+Current Score: 12.3333
+Candidate set: 28  29  38  41  49  75
+Current Score: 12.2778
+Current image selected: 52
+Current set: 28  29  38  41  49  52
+Selecting image 7
+Candidate set: 1  28  29  38  41  49  52
+Current Score: 12.6333
+Candidate set: 2  28  29  38  41  49  52
+Current Score: 12.6778
+Candidate set: 3  28  29  38  41  49  52
+Current Score: 12.7111
+Candidate set: 4  28  29  38  41  49  52
+Current Score: 12.7444
+Candidate set: 5  28  29  38  41  49  52
+Current Score: 12.8333
+Candidate set: 6  28  29  38  41  49  52
+Current Score: 12.8222
+Candidate set: 7  28  29  38  41  49  52
+Current Score: 12.9
+Candidate set: 8  28  29  38  41  49  52
+Current Score: 12.9444
+Candidate set: 9  28  29  38  41  49  52
+Current Score: 13.0444
+Candidate set: 10  28  29  38  41  49  52
+Current Score: 13.1
+Candidate set: 11  28  29  38  41  49  52
+Current Score: 13.2444
+Candidate set: 12  28  29  38  41  49  52
+Current Score: 13.2889
+Candidate set: 13  28  29  38  41  49  52
+Current Score: 13.3444
+Candidate set: 14  28  29  38  41  49  52
+Current Score: 13.4222
+Candidate set: 15  28  29  38  41  49  52
+Current Score: 13.5333
+Candidate set: 16  28  29  38  41  49  52
+Current Score: 13.5222
+Candidate set: 17  28  29  38  41  49  52
+Current Score: 13.5889
+Candidate set: 18  28  29  38  41  49  52
+Current Score: 13.6889
+Candidate set: 19  28  29  38  41  49  52
+Current Score: 13.6778
+Candidate set: 20  28  29  38  41  49  52
+Current Score: 13.6333
+Candidate set: 21  28  29  38  41  49  52
+Current Score: 13.6111
+Candidate set: 22  28  29  38  41  49  52
+Current Score: 13.5333
+Candidate set: 23  28  29  38  41  49  52
+Current Score: 13.5778
+Candidate set: 24  28  29  38  41  49  52
+Current Score: 13.4667
+Candidate set: 25  28  29  38  41  49  52
+Current Score: 13.4222
+Candidate set: 26  28  29  38  41  49  52
+Current Score: 13.3222
+Candidate set: 27  28  29  38  41  49  52
+Current Score: 13.3111
+Candidate set: 28  29  30  38  41  49  52
+Current Score: 13.3889
+Candidate set: 28  29  31  38  41  49  52
+Current Score: 13.3556
+Candidate set: 28  29  32  38  41  49  52
+Current Score: 13.5444
+Candidate set: 28  29  33  38  41  49  52
+Current Score: 13.4556
+Candidate set: 28  29  34  38  41  49  52
+Current Score: 13.4889
+Candidate set: 28  29  35  38  41  49  52
+Current Score: 13.5222
+Candidate set: 28  29  36  38  41  49  52
+Current Score: 13.4333
+Candidate set: 28  29  37  38  41  49  52
+Current Score: 13.5778
+Candidate set: 28  29  38  39  41  49  52
+Current Score: 13.5
+Candidate set: 28  29  38  40  41  49  52
+Current Score: 13.5556
+Candidate set: 28  29  38  41  42  49  52
+Current Score: 13.6444
+Candidate set: 28  29  38  41  43  49  52
+Current Score: 13.4667
+Candidate set: 28  29  38  41  44  49  52
+Current Score: 13.5889
+Candidate set: 28  29  38  41  45  49  52
+Current Score: 13.4667
+Candidate set: 28  29  38  41  46  49  52
+Current Score: 13.5
+Candidate set: 28  29  38  41  47  49  52
+Current Score: 13.3444
+Candidate set: 28  29  38  41  48  49  52
+Current Score: 13.4444
+Candidate set: 28  29  38  41  49  50  52
+Current Score: 13.2889
+Candidate set: 28  29  38  41  49  51  52
+Current Score: 13.4
+Candidate set: 28  29  38  41  49  52  53
+Current Score: 13.5222
+Candidate set: 28  29  38  41  49  52  54
+Current Score: 13.3111
+Candidate set: 28  29  38  41  49  52  55
+Current Score: 13.6
+Candidate set: 28  29  38  41  49  52  56
+Current Score: 13.4778
+Candidate set: 28  29  38  41  49  52  57
+Current Score: 13.6667
+Candidate set: 28  29  38  41  49  52  58
+Current Score: 13.5444
+Candidate set: 28  29  38  41  49  52  59
+Current Score: 13.6778
+Candidate set: 28  29  38  41  49  52  60
+Current Score: 13.5778
+Candidate set: 28  29  38  41  49  52  61
+Current Score: 13.5556
+Candidate set: 28  29  38  41  49  52  62
+Current Score: 13.4889
+Candidate set: 28  29  38  41  49  52  63
+Current Score: 13.5222
+Candidate set: 28  29  38  41  49  52  64
+Current Score: 13.4444
+Candidate set: 28  29  38  41  49  52  65
+Current Score: 13.3444
+Candidate set: 28  29  38  41  49  52  66
+Current Score: 13.3222
+Candidate set: 28  29  38  41  49  52  67
+Current Score: 13.1778
+Candidate set: 28  29  38  41  49  52  68
+Current Score: 13.1111
+Candidate set: 28  29  38  41  49  52  69
+Current Score: 13.0889
+Candidate set: 28  29  38  41  49  52  70
+Current Score: 12.9778
+Candidate set: 28  29  38  41  49  52  71
+Current Score: 12.9667
+Candidate set: 28  29  38  41  49  52  72
+Current Score: 12.8444
+Candidate set: 28  29  38  41  49  52  73
+Current Score: 12.8111
+Candidate set: 28  29  38  41  49  52  74
+Current Score: 12.7556
+Candidate set: 28  29  38  41  49  52  75
+Current Score: 12.7222
+Current image selected: 18
+Current set: 18  28  29  38  41  49  52
+Selecting image 8
+Candidate set: 1  18  28  29  38  41  49  52
+Current Score: 12.9889
+Candidate set: 2  18  28  29  38  41  49  52
+Current Score: 13.0778
+Candidate set: 3  18  28  29  38  41  49  52
+Current Score: 13.0667
+Candidate set: 4  18  28  29  38  41  49  52
+Current Score: 13.1889
+Candidate set: 5  18  28  29  38  41  49  52
+Current Score: 13.1667
+Candidate set: 6  18  28  29  38  41  49  52
+Current Score: 13.2222
+Candidate set: 7  18  28  29  38  41  49  52
+Current Score: 13.2556
+Candidate set: 8  18  28  29  38  41  49  52
+Current Score: 13.3222
+Candidate set: 9  18  28  29  38  41  49  52
+Current Score: 13.3667
+Candidate set: 10  18  28  29  38  41  49  52
+Current Score: 13.4222
+Candidate set: 11  18  28  29  38  41  49  52
+Current Score: 13.4889
+Candidate set: 12  18  28  29  38  41  49  52
+Current Score: 13.4111
+Candidate set: 13  18  28  29  38  41  49  52
+Current Score: 13.5
+Candidate set: 14  18  28  29  38  41  49  52
+Current Score: 13.3889
+Candidate set: 15  18  28  29  38  41  49  52
+Current Score: 13.7222
+Candidate set: 16  18  28  29  38  41  49  52
+Current Score: 13.3333
+Candidate set: 17  18  28  29  38  41  49  52
+Current Score: 13.8
+Candidate set: 18  19  28  29  38  41  49  52
+Current Score: 13.8222
+Candidate set: 18  20  28  29  38  41  49  52
+Current Score: 13.4444
+Candidate set: 18  21  28  29  38  41  49  52
+Current Score: 13.7556
+Candidate set: 18  22  28  29  38  41  49  52
+Current Score: 13.4889
+Candidate set: 18  23  28  29  38  41  49  52
+Current Score: 13.6889
+Candidate set: 18  24  28  29  38  41  49  52
+Current Score: 13.5333
+Candidate set: 18  25  28  29  38  41  49  52
+Current Score: 13.6556
+Candidate set: 18  26  28  29  38  41  49  52
+Current Score: 13.5667
+Candidate set: 18  27  28  29  38  41  49  52
+Current Score: 13.5667
+Candidate set: 18  28  29  30  38  41  49  52
+Current Score: 13.7111
+Candidate set: 18  28  29  31  38  41  49  52
+Current Score: 13.7222
+Candidate set: 18  28  29  32  38  41  49  52
+Current Score: 13.8889
+Candidate set: 18  28  29  33  38  41  49  52
+Current Score: 13.8667
+Candidate set: 18  28  29  34  38  41  49  52
+Current Score: 13.8
+Candidate set: 18  28  29  35  38  41  49  52
+Current Score: 13.9222
+Candidate set: 18  28  29  36  38  41  49  52
+Current Score: 13.7778
+Candidate set: 18  28  29  37  38  41  49  52
+Current Score: 13.8556
+Candidate set: 18  28  29  38  39  41  49  52
+Current Score: 13.7444
+Candidate set: 18  28  29  38  40  41  49  52
+Current Score: 13.7667
+Candidate set: 18  28  29  38  41  42  49  52
+Current Score: 13.8
+Candidate set: 18  28  29  38  41  43  49  52
+Current Score: 13.6556
+Candidate set: 18  28  29  38  41  44  49  52
+Current Score: 13.7667
+Candidate set: 18  28  29  38  41  45  49  52
+Current Score: 13.7222
+Candidate set: 18  28  29  38  41  46  49  52
+Current Score: 13.7111
+Candidate set: 18  28  29  38  41  47  49  52
+Current Score: 13.4778
+Candidate set: 18  28  29  38  41  48  49  52
+Current Score: 13.6556
+Candidate set: 18  28  29  38  41  49  50  52
+Current Score: 13.4556
+Candidate set: 18  28  29  38  41  49  51  52
+Current Score: 13.4667
+Candidate set: 18  28  29  38  41  49  52  53
+Current Score: 13.5889
+Candidate set: 18  28  29  38  41  49  52  54
+Current Score: 13.4444
+Candidate set: 18  28  29  38  41  49  52  55
+Current Score: 13.6778
+Candidate set: 18  28  29  38  41  49  52  56
+Current Score: 13.5778
+Candidate set: 18  28  29  38  41  49  52  57
+Current Score: 13.6889
+Candidate set: 18  28  29  38  41  49  52  58
+Current Score: 13.6111
+Candidate set: 18  28  29  38  41  49  52  59
+Current Score: 13.7111
+Candidate set: 18  28  29  38  41  49  52  60
+Current Score: 13.6222
+Candidate set: 18  28  29  38  41  49  52  61
+Current Score: 13.6111
+Candidate set: 18  28  29  38  41  49  52  62
+Current Score: 13.5667
+Candidate set: 18  28  29  38  41  49  52  63
+Current Score: 13.5889
+Candidate set: 18  28  29  38  41  49  52  64
+Current Score: 13.5889
+Candidate set: 18  28  29  38  41  49  52  65
+Current Score: 13.5
+Candidate set: 18  28  29  38  41  49  52  66
+Current Score: 13.4556
+Candidate set: 18  28  29  38  41  49  52  67
+Current Score: 13.3889
+Candidate set: 18  28  29  38  41  49  52  68
+Current Score: 13.3111
+Candidate set: 18  28  29  38  41  49  52  69
+Current Score: 13.2889
+Candidate set: 18  28  29  38  41  49  52  70
+Current Score: 13.2
+Candidate set: 18  28  29  38  41  49  52  71
+Current Score: 13.1556
+Candidate set: 18  28  29  38  41  49  52  72
+Current Score: 13.0778
+Candidate set: 18  28  29  38  41  49  52  73
+Current Score: 13.0222
+Candidate set: 18  28  29  38  41  49  52  74
+Current Score: 13.0333
+Candidate set: 18  28  29  38  41  49  52  75
+Current Score: 12.9333
+Current image selected: 35
+Current set: 18  28  29  35  38  41  49  52
+Selecting image 9
+Candidate set: 1  18  28  29  35  38  41  49  52
+Current Score: 13.2667
+Candidate set: 2  18  28  29  35  38  41  49  52
+Current Score: 13.3556
+Candidate set: 3  18  28  29  35  38  41  49  52
+Current Score: 13.3667
+Candidate set: 4  18  28  29  35  38  41  49  52
+Current Score: 13.4778
+Candidate set: 5  18  28  29  35  38  41  49  52
+Current Score: 13.4889
+Candidate set: 6  18  28  29  35  38  41  49  52
+Current Score: 13.5111
+Candidate set: 7  18  28  29  35  38  41  49  52
+Current Score: 13.4778
+Candidate set: 8  18  28  29  35  38  41  49  52
+Current Score: 13.5444
+Candidate set: 9  18  28  29  35  38  41  49  52
+Current Score: 13.6444
+Candidate set: 10  18  28  29  35  38  41  49  52
+Current Score: 13.6667
+Candidate set: 11  18  28  29  35  38  41  49  52
+Current Score: 13.7556
+Candidate set: 12  18  28  29  35  38  41  49  52
+Current Score: 13.6778
+Candidate set: 13  18  28  29  35  38  41  49  52
+Current Score: 13.8889
+Candidate set: 14  18  28  29  35  38  41  49  52
+Current Score: 13.7444
+Candidate set: 15  18  28  29  35  38  41  49  52
+Current Score: 14.0778
+Candidate set: 16  18  28  29  35  38  41  49  52
+Current Score: 13.7333
+Candidate set: 17  18  28  29  35  38  41  49  52
+Current Score: 14.1667
+Candidate set: 18  19  28  29  35  38  41  49  52
+Current Score: 14.2333
+Candidate set: 18  20  28  29  35  38  41  49  52
+Current Score: 13.8222
+Candidate set: 18  21  28  29  35  38  41  49  52
+Current Score: 14.1667
+Candidate set: 18  22  28  29  35  38  41  49  52
+Current Score: 13.9
+Candidate set: 18  23  28  29  35  38  41  49  52
+Current Score: 14.1222
+Candidate set: 18  24  28  29  35  38  41  49  52
+Current Score: 13.8444
+Candidate set: 18  25  28  29  35  38  41  49  52
+Current Score: 13.9333
+Candidate set: 18  26  28  29  35  38  41  49  52
+Current Score: 13.8444
+Candidate set: 18  27  28  29  35  38  41  49  52
+Current Score: 13.8111
+Candidate set: 18  28  29  30  35  38  41  49  52
+Current Score: 13.7556
+Candidate set: 18  28  29  31  35  38  41  49  52
+Current Score: 13.7333
+Candidate set: 18  28  29  32  35  38  41  49  52
+Current Score: 13.8889
+Candidate set: 18  28  29  33  35  38  41  49  52
+Current Score: 13.7
+Candidate set: 18  28  29  34  35  38  41  49  52
+Current Score: 13.8222
+Candidate set: 18  28  29  35  36  38  41  49  52
+Current Score: 13.8111
+Candidate set: 18  28  29  35  37  38  41  49  52
+Current Score: 13.7889
+Candidate set: 18  28  29  35  38  39  41  49  52
+Current Score: 13.8
+Candidate set: 18  28  29  35  38  40  41  49  52
+Current Score: 13.8556
+Candidate set: 18  28  29  35  38  41  42  49  52
+Current Score: 13.9667
+Candidate set: 18  28  29  35  38  41  43  49  52
+Current Score: 13.9333
+Candidate set: 18  28  29  35  38  41  44  49  52
+Current Score: 14.0111
+Candidate set: 18  28  29  35  38  41  45  49  52
+Current Score: 14.0889
+Candidate set: 18  28  29  35  38  41  46  49  52
+Current Score: 14.0778
+Candidate set: 18  28  29  35  38  41  47  49  52
+Current Score: 13.8667
+Candidate set: 18  28  29  35  38  41  48  49  52
+Current Score: 14.0222
+Candidate set: 18  28  29  35  38  41  49  50  52
+Current Score: 13.8667
+Candidate set: 18  28  29  35  38  41  49  51  52
+Current Score: 13.8778
+Candidate set: 18  28  29  35  38  41  49  52  53
+Current Score: 13.9444
+Candidate set: 18  28  29  35  38  41  49  52  54
+Current Score: 13.7778
+Candidate set: 18  28  29  35  38  41  49  52  55
+Current Score: 13.9556
+Candidate set: 18  28  29  35  38  41  49  52  56
+Current Score: 13.8889
+Candidate set: 18  28  29  35  38  41  49  52  57
+Current Score: 13.9667
+Candidate set: 18  28  29  35  38  41  49  52  58
+Current Score: 13.8889
+Candidate set: 18  28  29  35  38  41  49  52  59
+Current Score: 13.9333
+Candidate set: 18  28  29  35  38  41  49  52  60
+Current Score: 13.8889
+Candidate set: 18  28  29  35  38  41  49  52  61
+Current Score: 13.8778
+Candidate set: 18  28  29  35  38  41  49  52  62
+Current Score: 13.7556
+Candidate set: 18  28  29  35  38  41  49  52  63
+Current Score: 13.8222
+Candidate set: 18  28  29  35  38  41  49  52  64
+Current Score: 13.7889
+Candidate set: 18  28  29  35  38  41  49  52  65
+Current Score: 13.7333
+Candidate set: 18  28  29  35  38  41  49  52  66
+Current Score: 13.6333
+Candidate set: 18  28  29  35  38  41  49  52  67
+Current Score: 13.6222
+Candidate set: 18  28  29  35  38  41  49  52  68
+Current Score: 13.5444
+Candidate set: 18  28  29  35  38  41  49  52  69
+Current Score: 13.5333
+Candidate set: 18  28  29  35  38  41  49  52  70
+Current Score: 13.4333
+Candidate set: 18  28  29  35  38  41  49  52  71
+Current Score: 13.3778
+Candidate set: 18  28  29  35  38  41  49  52  72
+Current Score: 13.3111
+Candidate set: 18  28  29  35  38  41  49  52  73
+Current Score: 13.2778
+Candidate set: 18  28  29  35  38  41  49  52  74
+Current Score: 13.2667
+Candidate set: 18  28  29  35  38  41  49  52  75
+Current Score: 13.2
+Current image selected: 19
+Current set: 18  19  28  29  35  38  41  49  52
+Greedy selection completed

@@ -26,21 +26,22 @@ function greedy_sel_iter = greedy_selection_method(phantom_type, data_type,...
     greedy_sel_iter(1:N) = init_set;
     remaining_images = round(1:dataset.firings);
     remaining_images(init_set) = [];
+    score_graph = [];
     
     log_file = fopen('greedy_selection_log.txt', 'w');
 
     %-- Greedy selection iterations
     for iter = (N+1):K
-        fprintf(log_file,['Selecting image ',num2str(iter)]);
+        fprintf(log_file,['Selecting image ',num2str(iter), '\n']);
         ind = 1;
         score_max = -Inf;
         for i = 1:numel(remaining_images)
             pw_indices{1} = round(union(greedy_sel, remaining_images(i)));
-            fprintf(log_file,['Candidate set: ',num2str(pw_indices{1})]);
+            fprintf(log_file,['Candidate set: ',num2str(pw_indices{1}), '\n']);
             clear image score;
             switch data_type    
                 case 1
-                    image = das_iq(scan,dataset,pw_indices);
+                    image = das_iq_original(scan,dataset,pw_indices);
                 case 2
                     image = das_rf(scan,dataset,pw_indices);
                 otherwise       %-- Do deal with bad values
@@ -61,17 +62,17 @@ function greedy_sel_iter = greedy_selection_method(phantom_type, data_type,...
                 score_max = score;
                 ind = i;
             end
-            fprintf(log_file,['Current Score: ', num2str(score)]);
+            fprintf(log_file,['Current Score: ', num2str(score), '\n']);
         end
-        fprintf(log_file,['Current image selected: ', num2str(remaining_images(ind))]);
-        
+        fprintf(log_file,['Current image selected: ', num2str(remaining_images(ind)), '\n']);
+        score_graph = union(score_graph, score_max);
         greedy_sel = union(greedy_sel, remaining_images(ind));
         greedy_sel_iter(iter) = remaining_images(ind);
         remaining_images(ind) = [];
         
-        fprintf(log_file,['Current set: ',num2str(greedy_sel)]);
+        fprintf(log_file,['Current set: ',num2str(greedy_sel), '\n']);
     end
-    
+    plot(score_graph);
     fprintf(log_file,'Greedy selection completed');
     fclose(log_file);
                   

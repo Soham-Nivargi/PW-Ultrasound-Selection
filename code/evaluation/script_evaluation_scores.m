@@ -19,12 +19,12 @@ addpath(genpath('../src'));
 
 
 %-- Parameters
-acquisition_type = 2;       %-- 1 = simulation || 2 = experiments
+acquisition_type = 1;       %-- 1 = simulation || 2 = experiments
 phantom_type = 2;           %-- 1 = resolution & distorsion || 2 = contrast & speckle quality
 data_type = 1;              %-- 1 = IQ || 2 = RF
 flag_display = 0;           %-- 0 = do not display || 1 = display intermediate results
 
-K = 2;
+K = 5;
 
 %-- Parse parameter choices
 switch acquisition_type    
@@ -62,8 +62,8 @@ end
 %-- Create path to load corresponding files
 path_scan = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_scan.hdf5'];
 path_phantom = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_phantom.hdf5'];
-path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/greedy_selection_sorted_',phantom,'_',acqui,'_img_from_',data,'_K_',num2str(K),'.hdf5'];
-path_output_log = ['../../evaluation/',phantom,'/',phantom,'_',acqui,'_evaluation_from_',data,'.txt'];
+path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/trying_',phantom,'_',acqui,'_img_from_',data,'_K_',num2str(K),'.hdf5'];
+path_output_log = ['../../evaluation/',phantom,'/','trying_',phantom,'_',acqui,'_evaluation_from_',data,'1.txt'];
 
 
 %-- Perform evaluation for resolution
