@@ -52,11 +52,11 @@ switch data_type
         data = 'iq';        
 end
 
-
+K=9;
 %-- Create path to load corresponding files
 path_dataset = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_dataset_',data,'.hdf5'];
 path_scan = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_scan.hdf5'];
-path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_img_from_',data,'.hdf5'];
+path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/inv_gaussian_image_',phantom,'_',acqui,'_img_from_',data,'.hdf5'];
 
 
 %-- If corresponding image file exists then display it

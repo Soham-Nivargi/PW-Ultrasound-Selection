@@ -78,11 +78,14 @@ scan.read_file(path_scan);
 %         continue
 %     end
     %-- Indices of plane waves to be used for each reconstruction
-    pw_indices{1} = [38 34 30 26 22 43 47 51 55];
+    % pw_indices{1} = [38 25 26 27 28 49 50 51 48]; %overall
+    % pw_indices{1} = [38 21 23 28 22 52 51 45 49];%regionwise
+    % pw_indices{1} = [35,43,28,51,38,21,29,18,46];
+    pw_indices{1} = [38 34 42 22 54 30 46 26 50]; %uniform
     % pw_indices{1} = [38 30 22 14 8 45 52 60 68];
     % pw_indices{2} = 45;
     % pw_indices{3} = round(linspace(1,dataset.firings,11));
-    % pw_indices{4} = round(1:dataset.firings);               %-- dataset.firings corresponding to the total number of emitted steered plane waves
+    % pw_indices{1} = round(1:dataset.firings);               %-- dataset.firings corresponding to the total number of emitted steered plane waves
     flag_simu = num2str(flag_simu);
     flag_display = num2str(flag_display);
     
@@ -94,7 +97,8 @@ scan.read_file(path_scan);
     switch data_type    
         case 1
             % disp(arr{i});
-            image = das_iq_windowed(scan,dataset,pw_indices, path_scan, path_pht, flag_simu, flag_display);
+            image1 = das_iq_windowed(scan,dataset,pw_indices, path_scan, path_pht, flag_simu, flag_display);
+            % image2 = das_iq(scan,dataset,pw_indices);         
         case 2
             image = das_rf(scan,dataset,pw_indices);
         otherwise       %-- Do deal with bad values
@@ -102,30 +106,4 @@ scan.read_file(path_scan);
     end
     disp('Reconstruction Done')
     disp(['Result saved in "',path_reconstruted_img,'"'])
-    
-    
-    %-- Show the corresponding beamformed images
-    % dynamic_range = 60;
-    % image.show(dynamic_range);
-    % 
-    % 
-    % %-- Save results
-    % image.write_file(path_reconstruted_img);
-    
-    path_output_log = ['../../evaluation/',phantom,'/cnr_inv_gaussian',phantom,'_',acqui,'_evaluation_from_',data,'_', num2str(i),'.txt'];
-    path_phantom = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_phantom.hdf5'];
-    
-    flag_simu = num2str(flag_simu);
-    flag_display = num2str(flag_display);
-    switch phantom_type    
-        case 1 	%-- evaluating resolution and distorsion
-            tools.exec_evaluation_resolution_distorsion(path_scan,path_phantom,path_reconstruted_img,flag_simu,flag_display,path_output_log);
-        case 2 	%-- evaluating contrast and speckle quality
-            tools.exec_evaluation_contrast_speckle(path_scan,path_phantom,path_reconstruted_img,flag_simu,flag_display,path_output_log);
-        otherwise       %-- Do deal with bad values
-            tools.exec_evaluation_resolution(path_scan,path_phantom,path_reconstruted_img,flag_simu,flag_display,path_output_log);
-    end
-    disp('Evaluation Done')
-    disp(['Result saved in "',path_output_log,'"'])
-% end
-
+ 

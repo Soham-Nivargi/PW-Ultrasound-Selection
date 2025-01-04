@@ -156,8 +156,12 @@ classdef us_image < handle
                     vrange = [-dynamic_range 0];
 
                     %-- display image
-                    imagesc((h.scan.x_axis)*1e3,(h.scan.z_axis)*1e3,im); 
+                    imagesc((h.scan.x_axis)*1e3,(h.scan.z_axis)*1e3,im);
                     shading flat; colormap gray; caxis(vrange); colorbar; hold on;
+                    yline(10, 'r--', 'LineWidth', 1.5); % Horizontal line at z = 10 mm
+                    yline(20, 'b--', 'LineWidth', 1.5); % Horizontal line at z = 20 mm
+                    xline(15, 'g--', 'LineWidth', 1.5); % Vertical line at x = 15 mm
+                    xline(25, 'm--', 'LineWidth', 1.5); % Vertical line at x = 25 mm
                     axis equal manual;
                     xlabel('x [mm]');
                     ylabel('z [mm]');

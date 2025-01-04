@@ -26,7 +26,7 @@ init_set = 38;
                              %-- Initial set of images to start with
 
 %-- Parameters
-acquisition_type = 1;       %-- 1 = simulation || 2 = experiments
+acquisition_type = 2;       %-- 1 = simulation || 2 = experiments
 phantom_type = 2;           %-- 1 = resolution & distorsion || 2 = contrast & speckle quality
 data_type = 1;              %-- 1 = IQ || 2 = RF
 flag_display = 0;           %-- 0 = do not display || 1 = display intermediate results
@@ -69,7 +69,7 @@ end
 path_dataset = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_dataset_',data,'.hdf5'];
 path_scan = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_scan.hdf5'];
 path_phantom = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_phantom.hdf5'];
-path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/greedy_selection_sorted_left_top_',phantom,'_',acqui,'_img_from_',data,'_K_',num2str(K),'.hdf5'];
+path_reconstruted_img = ['oct30/',acquisition,'/greedy','/greedy_selection',phantom,'_',acqui,'_img_from_',data,'_K_',num2str(K),'.hdf5'];
 
 
 %-- Read the corresponding dataset and the region where to reconstruct the image
@@ -96,7 +96,7 @@ disp('In greedy selection algorithm');
 pw = greedy_selection_method(phantom_type, data_type,...
                       flag_display, dataset, scan, pht, K, init_set);
 
-% pw = [35,43,28,51,38,21,29,18,46,54,34,15,24,42,57,31,47,39,60,50,61,25,12,41,32];
+% pw = [35,43,28,51,38,21,29,18,46]   54,34,15,24,42,57,31,47,39,60,50,61,25,12,41,32];
                   
 disp(['Selected set of images (sorted by iteration): ', num2str(pw)]);
 
@@ -124,6 +124,7 @@ disp(['Result saved in "',path_reconstruted_img,'"'])
 %-- Show the corresponding beamformed images
 dynamic_range = 60;
 image.show(dynamic_range);
+saveas(gcf, ['oct30/',acquisition,'/greedy','/greedy_selection',phantom,'_',acqui,'_img_from_',data,'_K_',num2str(K),'.jpg']);
 
 
 %-- Save results

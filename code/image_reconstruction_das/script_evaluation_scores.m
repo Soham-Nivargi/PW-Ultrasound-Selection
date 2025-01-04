@@ -67,25 +67,28 @@ path_window_output_log = ['tukey_regionwise_2/trying_window_wala_image', '.txt']
 path_unwindow_output_log = ['tukey_regionwise_2/trying_non_window_wala_image', '.txt'];
 windowed_path = ['tukey_regionwise_2/trying_half_window_wala_image', '.hdf5'];
 unwindowed_path = ['tukey_regionwise_2/trying_non_window_wala_image', '.hdf5'];
-% left_top = zeros(1, 75);
-% left_middle = zeros(1,75);
-% left_bottom = zeros(1,75);
-% 
-% middle_top = zeros(1, 75);
-% middle_middle = zeros(1,75);
-% middle_bottom = zeros(1,75);
-% 
-% right_top = zeros(1, 75);
-% right_middle = zeros(1,75);
-% right_bottom = zeros(1,75);
+left_top = zeros(1, 75);
+left_middle = zeros(1,75);
+left_bottom = zeros(1,75);
 
-% for i = 1:75
-%     if i==38
-%         continue;
-%     end
+middle_top = zeros(1, 75);
+middle_middle = zeros(1,75);
+middle_bottom = zeros(1,75);
 
-    % path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/double_image','/double_image_',phantom,'_',acqui,'_img_from_',data,'_',num2str(i),'.hdf5'];
-    
+right_top = zeros(1, 75);
+right_middle = zeros(1,75);
+right_bottom = zeros(1,75);
+
+overall = zeros(1,75);
+
+for i = 1:75
+    if i==38
+        path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/single_image','/single_image_',phantom,'_',acqui,'_img_from_',data,'_',num2str(i),'.hdf5'];
+        cat = 1;
+    else
+        path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/double_image','/double_image_',phantom,'_',acqui,'_img_from_',data,'_',num2str(i),'.hdf5'];
+        cat = 2;
+    end
     %-- Perform evaluation for resolution
     disp(['Starting evaluation from ',acquisition,' for ',phantom,' using ',data,' dataset'])
     
@@ -96,29 +99,31 @@ unwindowed_path = ['tukey_regionwise_2/trying_non_window_wala_image', '.hdf5'];
         case 1 	%-- evaluating resolution and distorsion
             tools.exec_evaluation_resolution_distorsion(path_scan,path_phantom,windowed_path,flag_simu,flag_display,path_window_output_log);
         case 2 	%-- evaluating contrast and speckle quality
-            % score_contrast = tools.value_contrast_ret(path_scan,path_phantom,path_reconstruted_img,flag_simu,flag_display,path_output_log);
-            tools.exec_evaluation_contrast_speckle(path_scan,path_phantom,windowed_path,flag_simu,flag_display,path_window_output_log);
-            tools.exec_evaluation_contrast_speckle(path_scan,path_phantom,unwindowed_path,flag_simu,flag_display,path_unwindow_output_log);
+            score_contrast = tools.value_contrast_ret(path_scan,path_phantom,path_reconstruted_img,flag_simu,flag_display, cat);
+            % tools.exec_evaluation_contrast_speckle(path_scan,path_phantom,windowed_path,flag_simu,flag_display,path_window_output_log);
+            % tools.exec_evaluation_contrast_speckle(path_scan,path_phantom,unwindowed_path,flag_simu,flag_display,path_unwindow_output_log);
             % disp(score_contrast);
         otherwise       %-- Do deal with bad values
             tools.exec_evaluation_resolution(path_scan,path_phantom,path_reconstruted_img,flag_simu,flag_display,path_output_log);
     end
     
-    % middle_top(i) = score_contrast(1);
-    % middle_middle(i) = score_contrast(2);
-    % middle_bottom(i) = score_contrast(3);
-    % 
-    % left_top(i) = score_contrast(4);
-    % left_middle(i) = score_contrast(5);
-    % left_bottom(i) = score_contrast(6);
-    % 
-    % right_top(i) = score_contrast(7);
-    % right_middle(i) = score_contrast(8);
-    % right_bottom(i) = score_contrast(9);
+    middle_top(i) = score_contrast(1);
+    middle_middle(i) = score_contrast(2);
+    middle_bottom(i) = score_contrast(3);
 
-    disp('Evaluation Done')
+    left_top(i) = score_contrast(4);
+    left_middle(i) = score_contrast(5);
+    left_bottom(i) = score_contrast(6);
+
+    right_top(i) = score_contrast(7);
+    right_middle(i) = score_contrast(8);
+    right_bottom(i) = score_contrast(9);
+
+    overall(i) = mean(score_contrast);
+
+    % disp('Evaluation Done')
     % disp(['Result saved in "',path_output_log,'"'])
-% end
+end
 % left_top(38) = sum(left_top)/74;
 % left_middle(38) = sum(left_middle)/74;
 % left_bottom(38) = sum(left_bottom)/74;
@@ -128,66 +133,90 @@ unwindowed_path = ['tukey_regionwise_2/trying_non_window_wala_image', '.hdf5'];
 % right_top(38) = sum(right_top)/74;
 % right_middle(38) = sum(right_middle)/74;
 % right_bottom(38) = sum(right_bottom)/74;
-% 
-% figure();
-% plot(left_top);
-% xlabel('PW Index');
-% ylabel('CNR');
-% title('left top');
-% saveas(gcf, 'double/left_top.jpg');
-% 
-% figure();
-% plot(left_middle);
-% xlabel('PW Index');
-% ylabel('CNR');
-% title('left middle');
-% saveas(gcf, 'double/left_middle.jpg');
-% 
-% figure();
-% plot(left_bottom);
-% xlabel('PW Index');
-% ylabel('CNR');
-% title('left bottom');
-% saveas(gcf, 'double/left_bottom.jpg');
-% 
-% figure();
-% plot(middle_top);
-% xlabel('PW Index');
-% ylabel('CNR');
-% title('middle top');
-% saveas(gcf, 'double/middle_top.jpg');
-% 
-% figure();
-% plot(middle_middle);
-% xlabel('PW Index');
-% ylabel('CNR');
-% title('middle middle');
-% saveas(gcf, 'double/middle_middle.jpg');
-% 
-% figure();
-% plot(middle_bottom);
-% xlabel('PW Index');
-% ylabel('CNR');
-% title('middle bottom');
-% saveas(gcf, 'double/middle_bottom.jpg');
-% 
-% figure();
-% plot(right_top);
-% xlabel('PW Index');
-% ylabel('CNR');
-% title('right top');
-% saveas(gcf, 'double/right_top.jpg');
-% 
-% figure();
-% plot(right_middle);
-% xlabel('PW Index');
-% ylabel('CNR');
-% title('right middle');
-% saveas(gcf, 'double/right_middle.jpg');
-% 
-% figure();
-% plot(right_bottom);
-% xlabel('PW Index');
-% ylabel('CNR');
-% title('right bottom');
-% saveas(gcf, 'double/right_bottom.jpg');
+[~, idx_lt] = max(left_top);
+[~, idx_lm] = max(left_middle);
+[~, idx_lb] = max(left_bottom);
+
+[~, idx_mt] = max(middle_top);
+[~, idx_mm] = max(middle_middle);
+[~, idx_mb] = max(middle_bottom);
+
+[~, idx_rt] = max(right_top);
+[~, idx_rm] = max(right_middle);
+[~, idx_rb] = max(right_bottom);
+
+[~, idx_ov] = max(overall);
+
+
+
+
+
+figure();
+plot((round(1:75)-38)*16/37, left_top-left_top(38));
+xlabel('PW Index');
+ylabel('CNR');
+title('left top');
+saveas(gcf, 'double/left_top.jpg');
+
+figure();
+plot((round(1:75)-38)*16/37, left_middle-left_middle(38));
+xlabel('PW Index');
+ylabel('CNR');
+title('left middle');
+saveas(gcf, 'double/left_middle.jpg');
+
+figure();
+plot((round(1:75)-38)*16/37, left_bottom-left_bottom(38));
+xlabel('PW Index');
+ylabel('CNR');
+title('left bottom');
+saveas(gcf, 'double/left_bottom.jpg');
+
+figure();
+plot((round(1:75)-38)*16/37, middle_top-middle_top(38));
+xlabel('PW Index');
+ylabel('CNR');
+title('middle top');
+saveas(gcf, 'double/middle_top.jpg');
+
+figure();
+plot((round(1:75)-38)*16/37, middle_middle-middle_middle(38));
+xlabel('PW Index');
+ylabel('CNR');
+title('middle middle');
+saveas(gcf, 'double/middle_middle.jpg');
+
+figure();
+plot((round(1:75)-38)*16/37, middle_bottom-middle_bottom(38));
+xlabel('PW Index');
+ylabel('CNR');
+title('middle bottom');
+saveas(gcf, 'double/middle_bottom.jpg');
+
+figure();
+plot((round(1:75)-38)*16/37, right_top-right_top(38));
+xlabel('PW Index');
+ylabel('CNR');
+title('right top');
+saveas(gcf, 'double/right_top.jpg');
+
+figure();
+plot((round(1:75)-38)*16/37, right_middle-right_middle(38));
+xlabel('PW Index');
+ylabel('CNR');
+title('right middle');
+saveas(gcf, 'double/right_middle.jpg');
+
+figure();
+plot((round(1:75)-38)*16/37, right_bottom-right_bottom(38));
+xlabel('PW Index');
+ylabel('CNR');
+title('right bottom');
+saveas(gcf, 'double/right_bottom.jpg');
+
+figure();
+plot((round(1:75)-38)*16/37, overall-overall(38));
+xlabel('PW Index');
+ylabel('CNR');
+title('Overall');
+saveas(gcf, 'double/overall.jpg');

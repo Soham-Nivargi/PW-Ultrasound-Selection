@@ -1,9 +1,9 @@
-function score_contrast = value_contrast_ret(path_scan, path_phantom, path_img, flag_simu, flag_display, path_output)
+function score_contrast = value_contrast_ret(path_scan, path_phantom, path_img, flag_simu, flag_display, cat)
 
     %-- Function used for the evaluation of contrast and speckle quality in ultrasound imaging
     
     %-- Parameters
-    category = 2;
+    category = cat;
 
     %-- Convert input argument received as string
     flag_simu = uint8(str2num(flag_simu));   		%-- convert string back to int

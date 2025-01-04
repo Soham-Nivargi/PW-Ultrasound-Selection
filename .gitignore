@@ -1,0 +1,9 @@
+database/**/**/*.hdf5
+reconstructed_image/*.hdf5
+reconstructed_image/**/**/*.hdf5
+reconstructed_image/**/**/**/*.hdf5
+code/image_reconstructed_das/**/*.hdf5
+code/image_reconstructed_das/**/**/*.hdf5
+code/image_reconstructed_das/**/**/**/*.hdf5
+*.hdf5
+

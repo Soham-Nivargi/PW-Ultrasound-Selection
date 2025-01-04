@@ -49,13 +49,25 @@ function image = das_iq_windowed(scan,dataset,pw_indices, path_scan, path_pht, f
     rows = numel(scan.z_axis);
     cols = numel(scan.x_axis);
 
-    win = tukeywin(floor(rows/2), 0.25) * tukeywin(floor(cols/2)-1, 0.25)';
-    padded_win = padarray(win, [rows-floor(rows/4) cols-floor(cols/4)], 0);
-    coordinates = {[74,181], [74, 345], [74,507], [196,181], [196, 345], [196,507], [318,507], [318, 345], [318,181]};
+    win_top = tukeywin(265+15, 0.25) * tukeywin(132+10, 0.25)';
+    padded_win_top = padarray(win_top, [rows-floor(280/2) cols-floor(142/2)], 0);
+
+    win_other = tukeywin(172+21, 0.25) * tukeywin(132+10, 0.25)';
+    padded_win_other = padarray(win_other, [rows-floor(193/2) cols-floor(142/2)], 0);
+    % figure();
+    % imshow(padded_win_other);
+    % coordinates = {, [188, 132], , , [196,345], , , , };
+    coordinates = {[192,132], [192,343], [192,515], [68,132], [68,343], [68,515], [316, 132], [316,343], [316,515]};
     w = cell(1,9);
     for i=1:9
-        w{i} = padded_win(rows-coordinates{i}(2):2*rows-coordinates{i}(2)-1, cols-coordinates{i}(1):2*cols-coordinates{i}(1)-1);
+        if mod(i, 3) == 1
+            w{i} = padded_win_top(rows-coordinates{i}(2):2*rows-coordinates{i}(2)-1, cols-coordinates{i}(1):2*cols-coordinates{i}(1)-1);
+        else
+            w{i} = padded_win_other(rows-coordinates{i}(2):2*rows-coordinates{i}(2)-1, cols-coordinates{i}(1):2*cols-coordinates{i}(1)-1); 
+        end
         w{i} = w{i} / max(w{i}(:));
+        figure();
+        imshow(w{i});
     end
     
     time_vector = dataset.initial_time+(0:(dataset.samples-1))/dataset.sampling_frequency;
@@ -67,10 +79,11 @@ function image = das_iq_windowed(scan,dataset,pw_indices, path_scan, path_pht, f
         j=1;
         % disp(size(im1));
         waitbar(f/length(pw_indices),wb,sprintf('DAS-IQ beamforming %0.0f%%',f/length(pw_indices)*100));
+        contrast_reg = zeros([1 9]);
+        % disp(contrast_reg);
         for pw=pw_indices{f}
             temp_data = zeros(scan.pixels,length(pw_indices));
             window_data = zeros(scan.pixels,length(pw_indices));
-
             %-- transmit delay
             transmit_delay = scan.z*cos(dataset.angles(pw))+scan.x*sin(dataset.angles(pw));
             for nrx=1:dataset.channels
@@ -87,9 +100,9 @@ function image = das_iq_windowed(scan,dataset,pw_indices, path_scan, path_pht, f
                 window_data(:,f) = window_data(:,f)+phase_shift.*angular_apodization(:,pw).*receive_apodization(:,nrx);%.*interp1(time_vector,zeros(:,nrx,pw),delay,'spline',0);
             end
             envelope_temp_data = reshape(temp_data,[numel(scan.z_axis) numel(scan.x_axis)  1]);
-            figure();
-            imshow(envelope_temp_data, []);
-            title('OG image');
+            % figure();
+            % imshow(envelope_temp_data, []);
+            % title('OG image');
 
             temp_us = us_image('DAS-IQ beamforming');
             temp_us.author = 'Alfonso Rodriguez-Molares <alfonso.r.molares@ntnu.no>';
@@ -103,23 +116,46 @@ function image = das_iq_windowed(scan,dataset,pw_indices, path_scan, path_pht, f
             temp_us.transmit_apodization_window = 'none';
             temp_us.receive_apodization_window = 'Tukey 50%';
 
-            contrast_temp = tools.contrast_score(path_scan, path_pht, temp_us, flag_simu, flag_display);
+            contrast_curr = tools.contrast_score(path_scan, path_pht, temp_us, flag_simu, flag_display, 1);
+            disp(contrast_curr);
+            disp(contrast_reg);
             
-            [~, idx_u] = sort(contrast_temp, 'descend');
-            disp(idx_u(1));
-            window = w{idx_u(1)};
-            
-            window = min(window, 1);
-            disp(max(window(:)));
+            weights = contrast_curr - contrast_reg;
 
+            % weights = contrast_curr;
+            disp(weights);
+            
+            % if min(weights)<0
+            %     weights = weights - min(weights);
+            % end
+            % weights = weights/max(weights);
+
+            weights = 1 ./ (1 + exp(-0.5*weights));
+            disp(weights);
+            
+            window = zeros([numel(scan.z_axis) numel(scan.x_axis)  1]);
+            for n=1:9
+                window = window + weights(n)*w{n};
+            end
+
+            window = window/max(window(:));
+            window = (3+window)/4;
             figure();
             imshow(window);
-            title('Window');
+            % saveas(gcf, ['nov12/try10/window_', num2str(j), '.jpg']);
 
-            reg_image = reg_image.*((2-window)/3) + envelope_temp_data.*((1+window)/3); %envelope_temp_data .*(w/2)
-
-            filename1 = ['six_regions/trying_us_imag_', num2str(i), '.jpg'];
+            % reg_image = reg_image.*(1-window) + envelope_temp_data.*(window);
+            if j==1
+                reg_image = envelope_temp_data;
+            else
+                reg_image = reg_image.*(2-window) + envelope_temp_data.*(window);
+                % reg_image = reg_image.*((4-window)/5) + envelope_temp_data.*((2+window)/5);
+                % reg_image = reg_image.*((2-window)/3) + envelope_temp_data.*((1+window)/3);                
+            end
+       
             dynamic_range = 60;
+            filename1 = ['nov12/try10/iteration', num2str(j), '.jpg'];
+
             reg_us = us_image('DAS-IQ beamforming');
             reg_us.author = 'Alfonso Rodriguez-Molares <alfonso.r.molares@ntnu.no>';
             reg_us.affiliation = 'Norwegian University of Science and Technology (NTNU)';
@@ -132,12 +168,14 @@ function image = das_iq_windowed(scan,dataset,pw_indices, path_scan, path_pht, f
             reg_us.transmit_apodization_window = 'none';
             reg_us.receive_apodization_window = 'Tukey 50%';
             reg_us.show(dynamic_range);
-            saveas(gcf, filename1);
+            % saveas(gcf, filename1);
 
-            j = j+1;
-            
+            contrast_reg = tools.contrast_score(path_scan, path_pht, reg_us, flag_simu, flag_display, j);
 
-            
+            disp(contrast_reg);
+            % if contrast reg <0 define another window where 
+
+            j = j+1; 
             clc;
             disp([num2str(pw),' / ',num2str(length(pw_indices{f}))])   
         end
@@ -145,7 +183,7 @@ function image = das_iq_windowed(scan,dataset,pw_indices, path_scan, path_pht, f
 
     dynamic_range = 60;
     envelope_final_temp = abs(reg_image);
-    windowed_path_jpg = ['six_regions/trying_window_wala_image', '.jpg'];
+    windowed_path_jpg = ['Previous Results/nov12/try10/windowed', '.jpg'];
     close(wb);
     reg_us = us_image('DAS-IQ beamforming');
     reg_us.author = 'Alfonso Rodriguez-Molares <alfonso.r.molares@ntnu.no>';
@@ -162,12 +200,12 @@ function image = das_iq_windowed(scan,dataset,pw_indices, path_scan, path_pht, f
     reg_us.show(dynamic_range);
     saveas(gcf, windowed_path_jpg);
     
-    windowed_path = ['six_regions/trying_window_wala_image', '.hdf5'];
+    windowed_path = ['Previous Results/nov12/try10/windowed', '.hdf5'];
     reg_us.write_file(windowed_path);
     %-- reshape
     envelope_beamformed_data = abs(reshape(beamformed_data,[numel(scan.z_axis) numel(scan.x_axis)  length(pw_indices)]));
 
-    unwindowed_path_jpg = ['six_regions/non_window_wala_image', '.jpg'];
+    unwindowed_path_jpg = ['Previous Results/nov12/try10/unwindowed', '.jpg'];
     %-- declare an us_image object to store the beamformed data
     image = us_image('DAS-IQ beamforming');
     image.author = 'Alfonso Rodriguez-Molares <alfonso.r.molares@ntnu.no>';
@@ -185,8 +223,15 @@ function image = das_iq_windowed(scan,dataset,pw_indices, path_scan, path_pht, f
     image.show(dynamic_range);
     saveas(gcf, unwindowed_path_jpg);
 
-    unwindowed_path = ['six_regions/non_window_wala_image', '.hdf5'];
+    unwindowed_path = ['Previous Results/nov12/try10/unwindowed', '.hdf5'];
     image.write_file(unwindowed_path);
+
+    contrast_unwindowed = tools.contrast_score(path_scan, path_pht, image, flag_simu, flag_display, 9);
+
+    contrast_windowed = tools.contrast_score(path_scan, path_pht, reg_us, flag_simu, flag_display, 9);
+    disp(contrast_windowed);
+    disp(contrast_unwindowed);
+    disp(contrast_windowed-contrast_unwindowed);
 
 end
 

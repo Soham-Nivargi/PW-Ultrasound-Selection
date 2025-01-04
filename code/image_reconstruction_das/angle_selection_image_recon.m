@@ -62,8 +62,8 @@ K = 5;
 %-- Create path to load corresponding files
 path_dataset = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_dataset_',data,'.hdf5'];
 path_scan = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_scan.hdf5'];
-path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/trying_',phantom,'_',acqui,'_img_from_',data,'_K_',num2str(K),'.hdf5'];
-path_pht = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_phantom.hdf5'];
+% path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/trying_',phantom,'_',acqui,'_img_from_',data,'_K_',num2str(K),'.hdf5'];
+path_phantom = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_phantom.hdf5'];
 
 
 %-- Read the corresponding dataset and the region where to reconstruct the image
@@ -72,12 +72,114 @@ dataset.read_file(path_dataset);
 scan = linear_scan();
 scan.read_file(path_scan);
 
-chosen_angles = [0];
-contrast_list = [];
 
-image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu, flag_display, phantom_type);
+left_top = zeros(1, 75);
+left_middle = zeros(1,75);
+left_bottom = zeros(1,75);
 
-contrast_list.append()
+middle_top = zeros(1, 75);
+middle_middle = zeros(1,75);
+middle_bottom = zeros(1,75);
+
+right_top = zeros(1, 75);
+right_middle = zeros(1,75);
+right_bottom = zeros(1,75);
+
+overall = zeros(1,75);
+
+for i = 1:75
+
+    path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/single_image','/single_image_',phantom,'_',acqui,'_img_from_',data,'_',num2str(i),'.hdf5'];
+
+    %-- Perform evaluation for resolution
+    % disp(['Starting evaluation from ',acquisition,' for ',phantom,' using ',data,' dataset'])
+    
+    %-- Pass online string instances
+    flag_simu = num2str(flag_simu);
+    flag_display = num2str(flag_display);
+    switch phantom_type    
+        case 1 	%-- evaluating resolution and distorsion
+            tools.exec_evaluation_resolution_distorsion(path_scan,path_phantom,windowed_path,flag_simu,flag_display,path_window_output_log);
+        case 2 	%-- evaluating contrast and speckle quality
+            score_contrast = tools.value_contrast_ret(path_scan,path_phantom,path_reconstruted_img,flag_simu,flag_display, 1);
+        otherwise       %-- Do deal with bad values
+            tools.exec_evaluation_resolution(path_scan,path_phantom,path_reconstruted_img,flag_simu,flag_display,path_output_log);
+    end
+
+    middle_top(i) = score_contrast(1);
+    middle_middle(i) = score_contrast(2);
+    middle_bottom(i) = score_contrast(3);
+
+    left_top(i) = score_contrast(4);
+    left_middle(i) = score_contrast(5);
+    left_bottom(i) = score_contrast(6);
+
+    right_top(i) = score_contrast(7);
+    right_middle(i) = score_contrast(8);
+    right_bottom(i) = score_contrast(9);
+
+    overall(i) = mean(score_contrast);
+
+    % disp('Evaluation Done')
+    % disp(['Result saved in "',path_output_log,'"'])
+end
+% chosen_angles = [0];
+% contrast_list = [];
+% 
+% image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu, flag_display, phantom_type);
+% 
+% contrast_list.append()
+% Initialize variables
+angles = [38]; % Start with the initial angle 0°
+CNR_values = []; % Store calculated CNR for each angle
+max_iterations = 10; % Number of angles to select
+explore_range = 10; % Range of degrees to consider around each chosen angle
+
+% Initial CNR calculation for the 0° angle
+CNR_values(end+1) = overall(angles(end));
+
+for iter = 2:max_iterations
+    % Fit a linear regression model based on the angles and their CNR values
+    model = fitlm(angles, CNR_values); % Simple linear regression model
+    
+    % Predict CNR for angles within a small range in both directions
+    pos_candidate = angles(end) + explore_range; % Next positive angle
+    neg_candidate = angles(end) - explore_range; % Next negative angle
+    pos_mirror = -pos_candidate; % Mirror of the positive candidate
+    neg_mirror = -neg_candidate; % Mirror of the negative candidate
+    
+    % Predict the CNR values for all candidates
+    CNR_pred_pos = predict(model, pos_candidate);
+    CNR_pred_neg = predict(model, neg_candidate);
+    CNR_pred_pos_mirror = predict(model, pos_mirror);
+    CNR_pred_neg_mirror = predict(model, neg_mirror);
+    
+    % Introduce a small randomization factor to avoid getting stuck
+    random_offset = randi([-5, 5]);
+    pos_candidate = pos_candidate + random_offset;
+    neg_candidate = neg_candidate - random_offset;
+    pos_mirror = pos_mirror + random_offset;
+    neg_mirror = neg_mirror - random_offset;
+    
+    % Store all candidates and their predicted CNRs in a table
+    candidates = [pos_candidate, neg_candidate, pos_mirror, neg_mirror];
+    CNR_preds = [CNR_pred_pos, CNR_pred_neg, CNR_pred_pos_mirror, CNR_pred_neg_mirror];
+    
+    % Select the candidate with the highest predicted CNR
+    [~, max_idx] = max(CNR_preds);
+    next_angle = candidates(max_idx);
+    
+    % Calculate the CNR for the chosen angle and add it to the lists
+    angles(end+1) = next_angle;
+    CNR_values(end+1) = overall(next_angle);
+    
+    % Display the selected angle and corresponding CNR value
+    fprintf('Iteration %d: Selected angle = %.2f°, CNR = %.4f\n', iter, next_angle, CNR_values(end));
+end
+
+% Display final chosen angles and corresponding CNR values
+disp('Final chosen angles and corresponding CNR values:');
+disp(table(angles', CNR_values', 'VariableNames', {'Angle', 'CNR'}));
 
 
 

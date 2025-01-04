@@ -47,7 +47,7 @@ function image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu,
     %-- beamforming loop
     beamformed_data = zeros(scan.pixels,length(pw_indices));
     i = 0;
-    j = 0;
+    j = 1;
     
     time_vector = dataset.initial_time+(0:(dataset.samples-1))/dataset.sampling_frequency;
     w0 = 2*pi*dataset.modulation_frequency;
@@ -111,9 +111,9 @@ function image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu,
             
             rows = numel(scan.z_axis);
             cols = numel(scan.x_axis);
-            figure();
-            imshow(envelope_temp_data, []);
-            title('OG image');
+            % figure();
+            % imshow(envelope_temp_data, []);
+            % title('OG image');
             % for j=1:9
             %     [x, y] = ginput(1);    % Get one point's coordinates from the user
             % 
@@ -124,37 +124,89 @@ function image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu,
             
             
             % alpha = 1;
-            if pw<23
+            % if pw==26
+            %     cy = 74;  
+            %     cx = 181;
+            % elseif pw==27
+            %     cy = 74;  
+            %     cx = 345;
+            % elseif pw==38
+            %     cy = 74;  
+            %     cx = 507;
+            % elseif pw==28
+            %     cy = 196;
+            %     cx = 181;
+            % elseif pw==50
+            %     cy = 196;
+            %     cx = 345;
+            % elseif pw==25
+            %     cy = 196;
+            %     cx = 507;
+            % elseif pw==49
+            %     cy = 318;
+            %     cx = 507;
+            % elseif pw==48
+            %     cy = 318;
+            %     cx = 345;
+            % else
+            %     cy = 318;
+            %     cx = 181;
+            % end
+
+            % if pw==21
+            %     cy = 74;  
+            %     cx = 181;
+            % elseif pw==23
+            %     cy = 74;  
+            %     cx = 345;
+            % elseif pw==28
+            %     cy = 74;  
+            %     cx = 507;
+            % elseif pw==38
+            %     cy = 196;
+            %     cx = 181;
+            % elseif pw==52
+            %     cy = 196;
+            %     cx = 345;
+            % elseif pw==22
+            %     cy = 196;
+            %     cx = 507;
+            % elseif pw==51
+            %     cy = 318;
+            %     cx = 507;
+            % elseif pw==45
+            %     cy = 318;
+            %     cx = 345;
+            % else
+            %     cy = 318;
+            %     cx = 181;
+            % end
+
+            if pw < 23
                 cy = 74;  
                 cx = 181;
-            elseif pw < 27
+            elseif pw<27
                 cy = 74;  
                 cx = 345;
-                left_marg = 1;
-                right_marg = floor(cols/2);
-                top_marg = 1;
-                bottom_marg = floor(rows/2);
-            elseif pw < 32
+            elseif pw<31
                 cy = 74;  
                 cx = 507;
-            elseif pw < 35
+            elseif pw<35
                 cy = 196;
                 cx = 181;
             elseif pw<40
                 cy = 196;
                 cx = 345;
-            elseif pw<45
+            elseif pw<44
                 cy = 196;
                 cx = 507;
-            elseif pw<50
-                % Bottom-right region
+            elseif pw<48
                 cy = 318;
                 cx = 507;
-            elseif pw<54
+            elseif pw<52
                 cy = 318;
                 cx = 345;
             else
-                % Top-right region
                 cy = 318;
                 cx = 181;
             end
@@ -184,13 +236,13 @@ function image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu,
             w = zeros([numel(scan.z_axis) numel(scan.x_axis)  1]);
 
             % temp = tukeywin(bottom_marg-top_marg+1, 0.25) * tukeywin(right_marg-left_marg+1, 0.25)';
-            temp = tukeywin(floor(rows/2), 0.5) * tukeywin(floor(cols/2)-1, 0.5)';
+            temp = tukeywin(floor(rows/3), 0.25) * tukeywin(floor(cols/3)-1, 0.25)';
 
             % figure();
             % imshow(temp);
             % title('temp');
 
-            padded_temp = padarray(temp, [rows-floor(rows/4) cols-floor(cols/4)], 0);
+            padded_temp = padarray(temp, [rows-floor(rows/6) cols-floor(cols/6)], 0);
             % figure();
             % imshow(padded_temp);
             % title('temp');
@@ -212,10 +264,15 @@ function image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu,
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % w = w+1;
             % w = w / max(w(:));
-
+            % figure();
+            % imshow(w);
+            % title('Window');
+            % saveas(gcf, ['oct30/window/one/not_averaged_',num2str(j),'.jpg']);
+            % 
             figure();
-            imshow(w);
-            title('Window');
+            imshow((1+w)/3);
+            title('Window Averaged');
+            % saveas(gcf, ['oct30/window/one/averaged_',num2str(j),'.jpg']);
             
 
             disp(size(w));
@@ -254,8 +311,8 @@ function image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu,
             % % w3 = w2_y * w1_x;  % Bottom-left (img3)
             % % w4 = w2_y * w2_x;  % Bottom-right (img4)
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            filename1 = ['tukey_regionwise_3/half_window_', num2str(i), '.jpg'];
-            filename2 = ['trying_windowing/trying_us_imag_', num2str(i), '.jpg'];
+            % filename1 = ['tukey_regionwise_3/half_window_', num2str(i), '.jpg'];
+            filename2 = ['oct30/simulation/regioned/one/iteration', num2str(j), '.jpg'];
             % figure();
             % % subplot(1,2,1);
             % % imshow(abs(reg_image), []);
@@ -272,7 +329,7 @@ function image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu,
             reg_us.affiliation = 'Norwegian University of Science and Technology (NTNU)';
             reg_us.algorithm = 'Delay-and-Sum (IQ version)';
             reg_us.scan = scan;
-            reg_us.number_plane_waves = i;
+            reg_us.number_plane_waves = j;
             reg_us.data = abs(reg_image);
             % image.data = filtered_img;
             reg_us.transmit_f_number = 0;
@@ -282,14 +339,7 @@ function image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu,
             reg_us.show(dynamic_range);
             saveas(gcf, filename2);
 
-            i = i+1;
-
-
-
-
-
-
-
+            j = j+1;
 
             % % disp(rows);
             % % disp(cols);
@@ -412,7 +462,7 @@ function image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu,
 
     dynamic_range = 60;
     envelope_final_temp = abs(reg_image);
-    windowed_path_jpg = ['trying_windowing/trying_window_wala_image', '.jpg'];
+    windowed_path_jpg = ['oct30/simulation/regioned/one/windowed', '.jpg'];
     close(wb);
     reg_us = us_image('DAS-IQ beamforming');
     reg_us.author = 'Alfonso Rodriguez-Molares <alfonso.r.molares@ntnu.no>';
@@ -429,7 +479,7 @@ function image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu,
     reg_us.show(dynamic_range);
     saveas(gcf, windowed_path_jpg);
     
-    windowed_path = ['trying_windowing/trying_window_wala_image', '.hdf5'];
+    windowed_path = ['oct30/simulation/regioned/one/windowed', '.hdf5'];
     reg_us.write_file(windowed_path);
     %-- reshape
     envelope_beamformed_data = abs(reshape(beamformed_data,[numel(scan.z_axis) numel(scan.x_axis)  length(pw_indices)]));
@@ -447,7 +497,7 @@ function image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu,
     % imshow(filtered_img);
     % title(['Gaussian Filtered Image (\sigma = ', num2str(sigma), ')']);
 
-    unwindowed_path_jpg = ['trying_windowing/non_window_wala_image', '.jpg'];
+    unwindowed_path_jpg = ['oct30/simulation/regioned/one/not_windowed', '.jpg'];
     %-- declare an us_image object to store the beamformed data
     image = us_image('DAS-IQ beamforming');
     image.author = 'Alfonso Rodriguez-Molares <alfonso.r.molares@ntnu.no>';
@@ -465,26 +515,9 @@ function image = das_iq(scan,dataset,pw_indices, path_scan, path_pht, flag_simu,
     image.show(dynamic_range);
     saveas(gcf, unwindowed_path_jpg);
 
-    unwindowed_path = ['trying_windowing/non_window_wala_image', '.hdf5'];
+    unwindowed_path = ['oct30/simulation/regioned/one/not_windowed', '.hdf5'];
     image.write_file(unwindowed_path);
 
 end
 
-
-function w = create_tukey_window(N, center, alpha)
-    w = zeros(N, 1);
-    
-    for n = 1:N
-        % Distance from the center
-        d = abs(n - center);
-        
-        if d <= alpha * N / 2
-            w(n) = 0.5 * (1 + cos(pi * (2 * d / (alpha * N) - 1)));
-        elseif d < N / 2
-            w(n) = 1;
-        else
-            w(n) = 0.5 * (1 + cos(pi * (2 * d / (alpha * N) - 2 / alpha + 1)));
-        end
-    end
-end
 
