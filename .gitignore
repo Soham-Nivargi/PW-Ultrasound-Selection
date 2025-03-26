@@ -6,4 +6,5 @@ code/image_reconstructed_das/**/*.hdf5
 code/image_reconstructed_das/**/**/*.hdf5
 code/image_reconstructed_das/**/**/**/*.hdf5
 *.hdf5
+.DS_Store
 

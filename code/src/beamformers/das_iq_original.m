@@ -1,13 +1,5 @@
 function image = das_iq_original(scan,dataset,arr) %, path_reconstruted_img, path_image
 
-    %-- Function which implements the conventional Delay And Sum (DAS) beamform technique with apodization in reception
-    %-- The corresponding code is dedicated to the reconstrucion of dataset (rawdata) saved in IQ format
-
-    %-- Authors: Alfonso Rodriguez-Molares (alfonso.r.molares@ntnu.no)
-    %--          Olivier Bernard (olivier.bernard@creatis.insa-lyon.fr)
-
-    %-- $Date: 2016/03/01 $  
-
     assert(~isempty(dataset.modulation_frequency)&&dataset.modulation_frequency~=0,'The supplied dataset is not IQ');
 
     %-- select the plane waves that will be used in each frame
@@ -67,12 +59,12 @@ function image = das_iq_original(scan,dataset,arr) %, path_reconstruted_img, pat
     image.receive_f_number = rx_f_number;
     image.transmit_apodization_window = 'none';
     image.receive_apodization_window = 'Tukey 25%';
-    
-    % dynamic_range = 60;
-    % image.show(dynamic_range);
-    
-    % saveas(gcf, path_image);
-    
-    %-- Save results
-    % image.write_file(path_reconstruted_img);
+    path_image = ['Results/Paper_sampling_strategy/Reference/all.jpg'];
+    dynamic_range = 60;
+    image.show(dynamic_range);
+
+    saveas(gcf, path_image);
+    path_reconstructed_image = ['Results/Paper_sampling_strategy/Reference/all.hdf5'];
+    % -- Save results
+    image.write_file(path_reconstructed_image);
 end

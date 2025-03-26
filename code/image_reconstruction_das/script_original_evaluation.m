@@ -58,16 +58,19 @@ switch data_type
         data = 'iq';        
 end
 
-
+K=9;
 %-- Create path to load corresponding files
 path_scan = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_scan.hdf5'];
 path_phantom = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_phantom.hdf5'];
 % path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/single_image','/single_image_',phantom,'_',acqui,'_img_from_',data,'_75','.hdf5'];
-path_reconstruted_img1 = ['Previous Results/nov12/try10/unwindowed', '.hdf5'];
-path_output_log1 = ['Previous Results/nov12/try10/unwindowed', '.txt'];
+path_reconstruted_img1 = ['Results/uniform_simulation/new_window/unwindowed_15', '.hdf5'];
+path_output_log1 = ['Results/uniform_simulation/new_window/unwindowed_15', '.txt'];
 
-path_reconstruted_img2 = ['Previous Results/nov12/try10/windowed', '.hdf5'];
-path_output_log2 = ['Previous Results/nov12/try10/windowed', '.txt'];
+% path_reconstruted_img2 = ['Results/uniform_experiment/yes_window/windowed', '.hdf5'];
+% path_output_log2 = ['Results/uniform_experiment/yes_window/windowed', '.txt'];
+
+% path_reconstruted_img1 = ['Results/uniform_experiment/no_window/uniform','_K_',num2str(9),'.hdf5'];
+% path_output_log1 = ['Results/uniform_experiment/no_window/uniform','_K_',num2str(9),'.txt'];
 
 % path_window_output_log = ['tukey_regionwise_2/trying_window_wala_image', '.txt'];
 % path_unwindow_output_log = ['tukey_regionwise_2/trying_non_window_wala_image', '.txt'];
@@ -86,7 +89,13 @@ path_output_log2 = ['Previous Results/nov12/try10/windowed', '.txt'];
 % right_bottom = zeros(1,75);
 % 
 % overall = zeros(1,75);
-
+scan = linear_scan();
+scan.read_file(path_scan);
+pht = us_phantom();
+pht.read_file(path_phantom);
+image = us_image();
+image.read_file(path_reconstruted_img1);
+disp(image.number_plane_waves);
 % for i = 1:75
 %     if i==38
 %         path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/single_image','/single_image_',phantom,'_',acqui,'_img_from_',data,'_',num2str(i),'.hdf5'];
@@ -97,7 +106,8 @@ path_output_log2 = ['Previous Results/nov12/try10/windowed', '.txt'];
 %     end
     %-- Perform evaluation for resolution
     disp(['Starting evaluation from ',acquisition,' for ',phantom,' using ',data,' dataset'])
-    
+    % score = tools.contrast_score(scan, pht, image, flag_simu, flag_display, 5);
+    % disp(score);
     %-- Pass online string instances
     flag_simu = num2str(flag_simu);
     flag_display = num2str(flag_display);
@@ -107,7 +117,7 @@ path_output_log2 = ['Previous Results/nov12/try10/windowed', '.txt'];
         case 2 	%-- evaluating contrast and speckle quality
             % score_contrast = tools.value_contrast_ret(path_scan,path_phantom,path_reconstruted_img,flag_simu,flag_display, cat);
             tools.exec_evaluation_contrast_speckle(path_scan,path_phantom,path_reconstruted_img1,flag_simu,flag_display,path_output_log1);
-            tools.exec_evaluation_contrast_speckle(path_scan,path_phantom,path_reconstruted_img2,flag_simu,flag_display,path_output_log2);
+            % tools.exec_evaluation_contrast_speckle(path_scan,path_phantom,path_reconstruted_img2,flag_simu,flag_display,path_output_log2);
             % disp(score_contrast);
         otherwise       %-- Do deal with bad values
             tools.exec_evaluation_resolution(path_scan,path_phantom,path_reconstruted_img,flag_simu,flag_display,path_output_log);

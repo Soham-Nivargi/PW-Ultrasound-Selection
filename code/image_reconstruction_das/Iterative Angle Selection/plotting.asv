@@ -1,0 +1,25 @@
+qm0 = load('Queue-based/Exact paper method/Results/Simulation/25_unwindowed.mat');
+qm1 = load('Queue-based/My method/Results/Simulation/25_unwindowed.mat');
+qm1_win = load('Queue-based/My method/Results/Simulation/25_windowed.mat');
+qm2 = load('Queue-based/My method with modifications to Thresholding/Results/Simulation/25_unwindowed.mat');
+qm2_win = load('Queue-based/My method with modifications to Thresholding/Results/Simulation/25_windowed.mat');
+
+nqm0 = load('Not-queue-based/Exact paper method/Results/Simulation/25_unwindowed.mat');
+nqm1 = load('Not-queue-based/My method/Results/Simulation/25_unwindowed.mat');
+nqm1_win = load('Not-queue-based/My method/Results/Simulation/25_windowed.mat');
+nqm2 = load('Not-queue-based/My method with modifications to Thresholding/Results/Simulation/25_unwindowed.mat');
+nqm2_win = load('Not-queue-based/My method with modifications to Thresholding/Results/Simulation/25_windowed.mat');
+
+figure();
+plot(qm0.j, qm0.con_angle, 'LineWidth', 2,'r', 'DisplayName', 'Queue-Paper');
+hold on;
+plot(qm1.pw_indices{1}, qm1.con_angle, 'LineWidth', 2,'g', 'DisplayName', 'Queue-mod unwindowed');
+plot(qm1_win.pw_indices{1}, qm1_win.con_angle, 'LineWidth', 2,'b', 'DisplayName', 'Queue-mod windowed');
+plot(nqm0.pw_indices{1}, nqm0.con_angle, 'LineWidth', 2,'c', 'DisplayName', 'Unqueue-Paper');
+plot(nqm1.pw_indices{1}, nqm1.con_angle, 'LineWidth', 2,'m', 'DisplayName', 'UnQueue-mod unwindowed');
+plot(nqm1_win.pw_indices{1}, nqm1_win.con_angle, 'LineWidth', 2,'y', 'DisplayName', 'UnQueue-mod windowed');
+hold off;
+
+legend;
+xlabel('Angle Limit');
+ylabel('CNR')

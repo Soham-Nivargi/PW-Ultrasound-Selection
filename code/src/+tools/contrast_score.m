@@ -1,4 +1,4 @@
-function score_contrast = contrast_score(path_scan, path_phantom, image, flag_simu, flag_display, j)
+function score_contrast = contrast_score(scan, pht, image, j)
 
     %-- Function used for the evaluation of contrast and speckle quality in ultrasound imaging
     
@@ -6,30 +6,30 @@ function score_contrast = contrast_score(path_scan, path_phantom, image, flag_si
     category = j;
 
     %-- Convert input argument received as string
-    flag_simu = uint8(str2num(flag_simu));   		%-- convert string back to int
-    flag_display = uint8(str2num(flag_display));   	%-- convert string back to int
+    % flag_simu = uint8(str2num(flag_simu));   		%-- convert string back to int
+    % flag_display = uint8(str2num(flag_display));   	%-- convert string back to int
 
     %-- Read input data
-    scan = linear_scan();
-    scan.read_file(path_scan);
-    pht = us_phantom();
-    pht.read_file(path_phantom);
+    % scan = linear_scan();
+    % scan.read_file(path_scan);
+    % pht = us_phantom();
+    % pht.read_file(path_phantom);
 
     %-- Perform testing for contrast
     testing_contrast = us_contrast();
     testing_contrast.pht = pht;
     testing_contrast.scan = scan;
     testing_contrast.image = image;
-    testing_contrast.flagDisplay = flag_display;
+    % testing_contrast.flagDisplay = flag_display;
     testing_contrast.evaluate();
     
     %-- Perform testing for speckle quality
-    testing_speckle = us_speckle_quality();
-    testing_speckle.pht = pht;
-    testing_speckle.scan = scan;
-    testing_speckle.image = image;
-    testing_speckle.flagDisplay = flag_display;
-    testing_speckle.evaluate();    
+    % testing_speckle = us_speckle_quality();
+    % testing_speckle.pht = pht;
+    % testing_speckle.scan = scan;
+    % testing_speckle.image = image;
+    % testing_speckle.flagDisplay = flag_display;
+    % testing_speckle.evaluate();    
     
     %-- Check categories
     pw_list = testing_contrast.getNumberPlaneWavesList();
@@ -65,10 +65,10 @@ function score_contrast = contrast_score(path_scan, path_phantom, image, flag_si
         % fprintf(fid, '#C%d \n\n', category(c));
         if (indexCategory(c) ~= 0)
             idx = indexCategory(c);
-            disp(idx);
+            % disp(idx);
             score_contrast = squeeze(testing_contrast.score(idx, :, :));  % Update score_contrast here
             % writeScoreContrast(fid, score_contrast, flag_simu);
-            score_speckle = squeeze(testing_speckle.score(idx, :));
+            % score_speckle = squeeze(testing_speckle.score(idx, :));
             % writeScoreSpeckle(fid, score_speckle);
         end
         % fprintf(fid, '\n#END\n\n');            
@@ -82,7 +82,7 @@ function score_contrast = contrast_score(path_scan, path_phantom, image, flag_si
         idx = find(pw_list == pw_bonus);
         score = squeeze(testing_contrast.score(idx(1), :, :));  % Keep bonus score separate
         % writeScoreContrast(fid, score, flag_simu);  % Use the score from bonus category
-        score_speckle = squeeze(testing_speckle.score(idx(1), :));
+        % score_speckle = squeeze(testing_speckle.score(idx(1), :));
         % writeScoreSpeckle(fid, score_speckle);
     end
     % fprintf(fid, '\n#END\n\n');

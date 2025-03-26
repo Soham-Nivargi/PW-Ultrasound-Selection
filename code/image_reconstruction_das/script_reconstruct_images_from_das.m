@@ -70,26 +70,23 @@ dataset = us_dataset();
 dataset.read_file(path_dataset);
 scan = linear_scan();
 scan.read_file(path_scan);
+pht = us_phantom();
+pht.read_file(path_pht);
 
-% arr = cell(1, 1);
-% for i = 1:75
-%     arr{1} = [38 i]; % Each cell contains the index i
-%     if i==38
-%         continue
-%     end
     %-- Indices of plane waves to be used for each reconstruction
     % pw_indices{1} = [38 25 26 27 28 49 50 51 48]; %overall
     % pw_indices{1} = [38 21 23 28 22 52 51 45 49];%regionwise
     % pw_indices{1} = [35,43,28,51,38,21,29,18,46];
     pw_indices{1} = [38 34 42 22 54 30 46 26 50]; %uniform
+    % pw_indices{1} = [38 42 34 62 14 46 30 10 66 54 22 58 18 26 50];
     % pw_indices{1} = [38 30 22 14 8 45 52 60 68];
-    % pw_indices{2} = 45;
+    % pw_indices{1} = 75;
     % pw_indices{3} = round(linspace(1,dataset.firings,11));
     % pw_indices{1} = round(1:dataset.firings);               %-- dataset.firings corresponding to the total number of emitted steered plane waves
     flag_simu = num2str(flag_simu);
     flag_display = num2str(flag_display);
     
-    path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/inv_gaussian_image_',phantom,'_',acqui,'_img_from_',data,'.hdf5'];
+    % path_reconstruted_img = [];
     % disp(path_reconstruted_img);
     % path_image = ['../../reconstructed_image/',acquisition,'/',phantom,'/double_image_',phantom,'_',acqui,'_img_from_',data, '.jpg'];
     %-- Reconstruct Bmode images for each pw_indices
@@ -97,13 +94,18 @@ scan.read_file(path_scan);
     switch data_type    
         case 1
             % disp(arr{i});
-            image1 = das_iq_windowed(scan,dataset,pw_indices, path_scan, path_pht, flag_simu, flag_display);
-            % image2 = das_iq(scan,dataset,pw_indices);         
+            % image1 = das_iq_windowed(scan,dataset,pw_indices, path_scan, path_pht, flag_simu, flag_display);
+            % image2 = das_iq_original(scan,dataset);
+            image3 = das_iq_trial_windowing(scan, pht, dataset, pw_indices);
         case 2
             image = das_rf(scan,dataset,pw_indices);
         otherwise       %-- Do deal with bad values
             image = das_iq(scan,dataset,pw_indices);       
     end
+    pht = us_phantom();
+    pht.read_file(path_pht);
+    % tools.exec_evaluation_contrast_speckle(path_scan,path_pht,'Results/Paper_sampling_strategy/Reference/all.hdf5',flag_simu,flag_display,'Results/Paper_sampling_strategy/Reference/all.txt');
+    contrast = tools.contrast_score(scan,pht, image,15);
     disp('Reconstruction Done')
-    disp(['Result saved in "',path_reconstruted_img,'"'])
+    % disp(['Result saved in "',path_reconstruted_img,'"'])
  

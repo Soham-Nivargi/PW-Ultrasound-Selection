@@ -1,0 +1,9 @@
+Current selection: 49
+Current selection: 29
+Current selection: 19
+Current selection: 32
+Current selection: 46
+Current selection: 20
+Current selection: 35
+Current selection: 24
+Greedy selection completed

@@ -184,6 +184,76 @@ classdef us_contrast < handle
             end
                 
         end
+
+        function occlusion_angles(h)
+  
+            %-- Define parameters / variables
+            nb_frames = length(h.image.number_plane_waves);
+            frame_list = 1:nb_frames;
+            % h.score = zeros(nb_frames,length(h.pht.occlusionDiameter));
+
+            %-- Setting axis limits (mm)
+            x_lim = [min(h.scan.x_matrix(:)) max(h.scan.x_matrix(:))]*1e3; 
+            z_lim = [min(h.scan.z_matrix(:)) max(h.scan.z_matrix(:))]*1e3; 
+            x = h.scan.x_matrix;
+            z = h.scan.z_matrix;            
+            
+            %-- Setting dynamic range for visualization
+            vrange = [-h.dynamic_range 0];            
+            
+            %-- Loop over frames
+            for f=frame_list            
+            
+                %-- Compute dB values
+                env = h.image.data(:,:,f);
+                bmode = 20*log10(env./max(env(:)));                
+                
+                %-- Ploting image reconstruction
+                if (h.flagDisplay==1)
+                    figure(1); set(gca,'fontsize',16);
+                    imagesc((h.scan.x_axis)*1e3,(h.scan.z_axis)*1e3,bmode); 
+                    shading flat; colormap gray; caxis(vrange); colorbar; hold on;
+                    axis equal manual; xlabel('x [mm]'); ylabel('z [mm]'); axis([x_lim z_lim]);
+                    set(gca,'YDir','reverse');
+                    set(gca,'fontsize',16);
+                    title(sprintf('%s\n %d plane waves',char(h.image.name),h.image.number_plane_waves(f)));
+                    pause(0.1);
+                end
+
+                %-- Main loop
+                for k=1:length(h.pht.occlusionDiameter)
+
+                    r = h.pht.occlusionDiameter(k) / 2;
+                    rin = r - h.padding * h.pht.lateralResolution;
+                    rout1 = r + h.padding * h.pht.lateralResolution;
+                    rout2 = 1.2*sqrt(rin^2+rout1^2);
+                    xc = h.pht.occlusionCenterX(k);
+                    zc = h.pht.occlusionCenterZ(k);
+                    maskOcclusion = ( ((x-xc).^2 + (z-zc).^2) <= r^2);
+                    maskInside = ( ((x-xc).^2 + (z-zc).^2) <= rin^2);
+                    maskOutside = ( (((x-xc).^2 + (z-zc).^2) >= rout1^2) & ...
+                        (((x-xc).^2 + (z-zc).^2) <= rout2^2) );
+
+                    %-- Ploting image reconstruction
+                    if (h.flagDisplay==1)
+                        hold on; contour(h.scan.x_axis*1e3,h.scan.z_axis*1e3,maskOcclusion,[1 1],'y-','linewidth',2);
+                        hold on; contour(h.scan.x_axis*1e3,h.scan.z_axis*1e3,maskInside,[1 1],'r-','linewidth',2);
+                        hold on; contour(h.scan.x_axis*1e3,h.scan.z_axis*1e3,maskOutside,[1 1],'g-','linewidth',2);
+                        pause(0.1);
+                    end
+
+                    inside = bmode(maskInside);
+                    outside = bmode(maskOutside);
+
+                    value = 20 * log10( abs(mean(inside)-mean(outside)) / ...
+                        sqrt((var(inside)+var(outside))/2) );
+                    h.score(f,k) = round(value*10) / 10;
+
+                end
+                
+            end
+                
+        end
         
     end
     

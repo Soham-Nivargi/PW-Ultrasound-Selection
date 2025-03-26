@@ -18,8 +18,8 @@ addpath(genpath('../src'));
 
 
 %-- Parameters
-acquisition_type = 1;       %-- 1 = simulation || 2 = experiments
-phantom_type = 1;           %-- 1 = resolution || 2 = contrast
+acquisition_type = 2;       %-- 1 = simulation || 2 = experiments
+phantom_type = 2;           %-- 1 = resolution || 2 = contrast
 data_type = 1;              %-- 1 = IQ || 2 = RF
 
 
@@ -54,13 +54,12 @@ end
 
 K=9;
 %-- Create path to load corresponding files
-path_dataset = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_dataset_',data,'.hdf5'];
-path_scan = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_scan.hdf5'];
-path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/inv_gaussian_image_',phantom,'_',acqui,'_img_from_',data,'.hdf5'];
-
+path_dataset = '../../reconstructed_image/carotid_long/carotid_long_expe_dataset_iq.hdf5';
+path_scan = '../../reconstructed_image/carotid_long/carotid_long_expe_scan.hdf5';
+path_reconstruted_img = ['Results/greedy_experiment/yes_window/greedy_selection_',phantom,'_',acqui,'_img_from_',data,'_K_',num2str(K),'.hdf5'];
 
 %-- If corresponding image file exists then display it
-if exist(path_reconstruted_img,'file')
+% if exist(path_reconstruted_img,'file')
 
     %-- Read corresponding files
     disp(['Show reconstructed image from ',acquisition,' for ',phantom,' using ',data,' dataset'])
@@ -71,11 +70,13 @@ if exist(path_reconstruted_img,'file')
     image = us_image();
     image.read_file(path_reconstruted_img);
 
+    % image = das_iq_original(scan, dataset);
+
     %-- Show the beamformed images
     dynamic_range = 60;
     image.show(dynamic_range);
 
-else 
-    disp(['File: "',path_reconstruted_img,'" does not exists'])
-end
+% else 
+%     disp(['File: "',path_reconstruted_img,'" does not exists'])
+% end
 
