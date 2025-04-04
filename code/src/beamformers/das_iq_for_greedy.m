@@ -31,36 +31,60 @@ function [beamform_max, ind_max, contrast_max] = das_iq_for_greedy(scan,pht, dat
     rows = numel(scan.z_axis);
     cols = numel(scan.x_axis);
 
-    win_top = tukeywin(265+15, 0.25) * tukeywin(132+10, 0.25)';
-    padded_win_top = padarray(win_top, [rows-floor(280/2) cols-floor(142/2)], 0);
-
-    win_other = tukeywin(172+21, 0.25) * tukeywin(132+10, 0.25)';
-    padded_win_other = padarray(win_other, [rows-floor(193/2) cols-floor(142/2)], 0);
-    % figure();
-    % imshow(padded_win_other);
-    % coordinates = {, [188, 132], , , [196,345], , , , };
-    coordinates = {[192,132], [192,343], [192,515], [68,132], [68,343], [68,515], [316, 132], [316,343], [316,515]};
-    w = cell(1,9);
-    for i=1:9
-        if mod(i, 3) == 1
-            w{i} = padded_win_top(rows-coordinates{i}(2):2*rows-coordinates{i}(2)-1, cols-coordinates{i}(1):2*cols-coordinates{i}(1)-1);
-        else
-            w{i} = padded_win_other(rows-coordinates{i}(2):2*rows-coordinates{i}(2)-1, cols-coordinates{i}(1):2*cols-coordinates{i}(1)-1); 
-        end
-        w{i} = w{i} / max(w{i}(:));
-        % figure();
-        % imshow(w{i});
-    end
-
-
-    % win = tukeywin(floor(rows/3.5), 0.25) * tukeywin(floor(cols/3)-1, 0.25)';
-    % padded_win = padarray(win, [rows-floor(rows/7) cols-floor(cols/6)], 0);
-    % coordinates = {[74,181], [74, 345], [74,507], [196,181], [196, 345], [196,507], [318,181], [318, 345], [318,507]};
+    %----------------------------------  
+    %Window 21, Window 22
+    % win_top = tukeywin(265+15, 0.25) * tukeywin(132+10, 0.25)';
+    % padded_win_top = padarray(win_top, [rows-floor(280/2) cols-floor(142/2)], 0);
+    % win_other = tukeywin(172+21, 0.25) * tukeywin(132+10, 0.25)';
+    % padded_win_other = padarray(win_other, [rows-floor(193/2) cols-floor(142/2)], 0);
+    % coordinates = {[192,132], [192,343], [192,515], [68,132], [68,343], [68,515], [316, 132], [316,343], [316,515]};
     % w = cell(1,9);
     % for i=1:9
-    %     w{i} = padded_win(rows-coordinates{i}(2):2*rows-coordinates{i}(2)-1, cols-coordinates{i}(1):2*cols-coordinates{i}(1)-1);
+    %     if mod(i, 3) == 1
+    %         w{i} = padded_win_top(rows-coordinates{i}(2):2*rows-coordinates{i}(2)-1, cols-coordinates{i}(1):2*cols-coordinates{i}(1)-1);
+    %     else
+    %         w{i} = padded_win_other(rows-coordinates{i}(2):2*rows-coordinates{i}(2)-1, cols-coordinates{i}(1):2*cols-coordinates{i}(1)-1); 
+    %     end
     %     w{i} = w{i} / max(w{i}(:));
+    %     % figure();
+    %     % imshow(w{i});
     % end
+
+    %------------------------------------
+    %Window 13, Window 14, Window 15, Window 16, Window 17, Window 18
+    coordinates = {[196,181], [196, 345], [196,507], [74,181], [74, 345], [74,507], [318,181], [318, 345], [318,507]};
+    [X, Y] = meshgrid(1:cols, 1:rows);
+
+    w = cell(1,length(pht.occlusionDiameter));
+    mask_all = zeros(size(X));
+    x = scan.x_matrix;
+    z = scan.z_matrix;
+    mask = cell(1,length(pht.occlusionDiameter));
+
+    for k=1:length(pht.occlusionDiameter)
+
+        r = pht.occlusionDiameter(k) / 2;
+        xc = pht.occlusionCenterX(k);
+        zc = pht.occlusionCenterZ(k);
+        mask{k} = ( (abs(x-xc) <= sqrt(2)*r) & abs(z-zc) <= sqrt(2)*r);
+
+
+        % figure();
+        % imshow(mask{k});
+        % title(sprintf('Occlusion %2d', k));
+    end
+
+    for i=1:9
+        win = tukeywin(sum(mask{i}(:,coordinates{i}(1))), 0.25) * tukeywin(sum(mask{i}(coordinates{i}(2),:)), 0.25)';
+        w{i} = zeros(size(X));
+        w{i}(mask{i}==1) = win;    
+        % figure();
+        % imshow(w{i});
+
+        mask_all = mask_all | mask{i};
+    end
+
+    mask_all = ~mask_all;
 
     temp_us = us_image('DAS-IQ beamforming');
     temp_us.author = 'Alfonso Rodriguez-Molares <alfonso.r.molares@ntnu.no>';
@@ -107,77 +131,41 @@ function [beamform_max, ind_max, contrast_max] = das_iq_for_greedy(scan,pht, dat
             end
             envelope_temp_data = reshape(temp_data,[numel(scan.z_axis) numel(scan.x_axis)  1]);
 
-            % figure();
-            % imshow(envelope_temp_data, []);
-            % title('OG image');
-            temp_us.number_plane_waves = 1;
-            temp_us.data = abs(envelope_temp_data);
-            
-
-            contrast_curr =  tools.contrast_score(scan, pht, temp_us, 1);
-            mean_curr = mean(contrast_curr, 2);            
-            % disp(contrast_curr);
-            % disp(mean_curr)
-            % disp(contrast_reg);
+            temp_us.number_plane_waves = j+1;
+            temp_us.data = abs(envelope_temp_data+reg_image);
+            contrast_curr =  tools.contrast_score(scan, pht, temp_us, j+1);            
             
             weights = contrast_curr - contrast_reg;
-
-            % weights = contrast_curr;
-            % disp(weights);
-            
-            % if min(weights)<0
-            %     weights = weights - min(weights);
-            % end
-            % weights = weights/max(weights);
-
-            weights = 1 ./ (1 + exp(-0.5*weights));
-            % disp(weights);
+            weights = 1 ./ (1 + exp(-6*weights));
             
             window = zeros([numel(scan.z_axis) numel(scan.x_axis)  1]);
             for n=1:9
                 window = window + weights(n)*w{n};
             end
-
-            window = window/max(window(:));
+            window = min(window, 1);
             window = (3+window)/4;
-            % figure();
-            % imshow(window);
-            % saveas(gcf, ['nov12/try10/window_', num2str(j), '.jpg']);
 
-            % reg_image = reg_image.*(1-window) + envelope_temp_data.*(window);
+            % Define a stronger Gaussian blur filter
+            sigma = 20;  % Increased blur strength
+            filter_size = 51;  % Larger filter for smooth blending of 40-50 pixel regions
+            h = fspecial('gaussian', filter_size, sigma);
+
+            % Apply the filter
+            img_blurred = imfilter(window, h, 'replicate');
+
+            window = img_blurred;
+
             if j==1 && init_flag==1
                 reg_image = envelope_temp_data;
             else
-                reg_image = reg_image.*(2-window) + envelope_temp_data.*(window);
-                % reg_image = reg_image.*((4-window)/5) + envelope_temp_data.*((2+window)/5);
-                % reg_image = reg_image.*((2-window)/3) + envelope_temp_data.*((1+window)/3);                
+                reg_image = reg_image.*(2-window) + envelope_temp_data.*(window);               
             end
        
-            % dynamic_range = 60;
-            % filename1 = ['nov12/try10/iteration', num2str(j), '.jpg'];
-
-            % reg_us = us_image('DAS-IQ beamforming');
-            % reg_us.author = 'Alfonso Rodriguez-Molares <alfonso.r.molares@ntnu.no>';
-            % reg_us.affiliation = 'Norwegian University of Science and Technology (NTNU)';
-            % reg_us.algorithm = 'Delay-and-Sum (IQ version)';
-            % reg_us.scan = scan;
-            % reg_us.number_plane_waves = j;
-            % reg_us.data = abs(reg_image);
-            % reg_us.transmit_f_number = 0;
-            % reg_us.receive_f_number = rx_f_number;
-            % reg_us.transmit_apodization_window = 'none';
-            % reg_us.receive_apodization_window = 'Tukey 50%';
-            % reg_us.show(dynamic_range);
-            % % saveas(gcf, filename1);
             temp_us.number_plane_waves = j+1;
             temp_us.data = abs(reg_image);
 
             contrast_reg =  tools.contrast_score(scan, pht, temp_us, j+1);
             mean_reg = mean(contrast_reg, 2);
-
-            % disp(contrast_reg);
-            % disp(mean_reg);
-            % if contrast reg <0 define another window where 
 
             j = j+1; 
             clc;

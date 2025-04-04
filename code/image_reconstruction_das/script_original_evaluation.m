@@ -24,8 +24,6 @@ phantom_type = 2;           %-- 1 = resolution & distorsion || 2 = contrast & sp
 data_type = 1;              %-- 1 = IQ || 2 = RF
 flag_display = 0;           %-- 0 = do not display || 1 = display intermediate results
 
-K = 9;
-
 %-- Parse parameter choices
 switch acquisition_type    
     case 1
@@ -62,33 +60,9 @@ K=9;
 %-- Create path to load corresponding files
 path_scan = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_scan.hdf5'];
 path_phantom = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_phantom.hdf5'];
-% path_reconstruted_img = ['../../reconstructed_image/',acquisition,'/',phantom,'/single_image','/single_image_',phantom,'_',acqui,'_img_from_',data,'_75','.hdf5'];
-path_reconstruted_img1 = ['Results/uniform_simulation/new_window/unwindowed_15', '.hdf5'];
-path_output_log1 = ['Results/uniform_simulation/new_window/unwindowed_15', '.txt'];
+path_reconstruted_img1 = ['Windows/Results weighting strategy 1/simulation/NO-MEAN-FILTER/Window-11 Uniform/TwoMinus/unwindowed_15.hdf5'];
 
-% path_reconstruted_img2 = ['Results/uniform_experiment/yes_window/windowed', '.hdf5'];
-% path_output_log2 = ['Results/uniform_experiment/yes_window/windowed', '.txt'];
-
-% path_reconstruted_img1 = ['Results/uniform_experiment/no_window/uniform','_K_',num2str(9),'.hdf5'];
-% path_output_log1 = ['Results/uniform_experiment/no_window/uniform','_K_',num2str(9),'.txt'];
-
-% path_window_output_log = ['tukey_regionwise_2/trying_window_wala_image', '.txt'];
-% path_unwindow_output_log = ['tukey_regionwise_2/trying_non_window_wala_image', '.txt'];
-% windowed_path = ['tukey_regionwise_2/trying_half_window_wala_image', '.hdf5'];
-% unwindowed_path = ['tukey_regionwise_2/trying_non_window_wala_image', '.hdf5'];
-% left_top = zeros(1, 75);
-% left_middle = zeros(1,75);
-% left_bottom = zeros(1,75);
-% 
-% middle_top = zeros(1, 75);
-% middle_middle = zeros(1,75);
-% middle_bottom = zeros(1,75);
-% 
-% right_top = zeros(1, 75);
-% right_middle = zeros(1,75);
-% right_bottom = zeros(1,75);
-% 
-% overall = zeros(1,75);
+path_output_log1 = ['Windows/Results weighting strategy 1/simulation/NO-MEAN-FILTER/Window-11 Uniform/TwoMinus/unwindowed_15.txt'];
 scan = linear_scan();
 scan.read_file(path_scan);
 pht = us_phantom();

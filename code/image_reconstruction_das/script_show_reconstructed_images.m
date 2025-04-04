@@ -18,7 +18,7 @@ addpath(genpath('../src'));
 
 
 %-- Parameters
-acquisition_type = 2;       %-- 1 = simulation || 2 = experiments
+acquisition_type = 1;       %-- 1 = simulation || 2 = experiments
 phantom_type = 2;           %-- 1 = resolution || 2 = contrast
 data_type = 1;              %-- 1 = IQ || 2 = RF
 
@@ -54,12 +54,15 @@ end
 
 K=9;
 %-- Create path to load corresponding files
-path_dataset = '../../reconstructed_image/carotid_long/carotid_long_expe_dataset_iq.hdf5';
-path_scan = '../../reconstructed_image/carotid_long/carotid_long_expe_scan.hdf5';
-path_reconstruted_img = ['Results/greedy_experiment/yes_window/greedy_selection_',phantom,'_',acqui,'_img_from_',data,'_K_',num2str(K),'.hdf5'];
+% path_dataset = '../../reconstructed_image/carotid_long/carotid_long_expe_dataset_iq.hdf5';
+% path_scan = '../../reconstructed_image/carotid_long/carotid_long_expe_scan.hdf5';
+path_reconstruted_img = ['Windows/Results weighting strategy 1/simulation/NO-MEAN-FILTER/Window-12 Uniform/TwoMinus/windowed_15.hdf5'];
+path_dataset = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_dataset_',data,'.hdf5'];
+path_scan = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_scan.hdf5'];
+path_pht = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_phantom.hdf5'];
 
 %-- If corresponding image file exists then display it
-% if exist(path_reconstruted_img,'file')
+if exist(path_reconstruted_img,'file')
 
     %-- Read corresponding files
     disp(['Show reconstructed image from ',acquisition,' for ',phantom,' using ',data,' dataset'])
@@ -76,7 +79,7 @@ path_reconstruted_img = ['Results/greedy_experiment/yes_window/greedy_selection_
     dynamic_range = 60;
     image.show(dynamic_range);
 
-% else 
-%     disp(['File: "',path_reconstruted_img,'" does not exists'])
-% end
+else 
+    disp(['File: "',path_reconstruted_img,'" does not exists'])
+end
 

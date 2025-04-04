@@ -1,0 +1,29 @@
+#C1 
+
+
+#END
+
+#BONUS-C9 
+
+Mean contrast scores (dB): 11.22 
+
+Left column targets 
+10.70
+11.60
+10.30
+
+Middle column targets 
+11.00
+11.90
+11.50
+
+Right column targets 
+11.80
+11.60
+10.60
+
+PENALITY: 0
+Speckle quality (from Kolmogorov-Smirnov test) 
+
+#END
+

@@ -6,7 +6,7 @@ addpath(genpath('../src'));
 
 
 %-- Parameters
-acquisition_type = 2;       %-- 1 = simulation || 2 = experiments
+acquisition_type = 1;       %-- 1 = simulation || 2 = experiments
 phantom_type = 2;           %-- 1 = resolution & distorsion || 2 = contrast & speckle quality
 data_type = 1;              %-- 1 = IQ || 2 = RF
 flag_display = 0;
@@ -43,9 +43,9 @@ switch data_type
         data = 'iq';        
 end
 %-- Create path to load corresponding files
-path_dataset = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_dataset_',data,'.hdf5'];
-path_scan = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_scan.hdf5'];
-path_pht = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_phantom.hdf5'];
+path_dataset = ['../../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_dataset_',data,'.hdf5'];
+path_scan = ['../../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_scan.hdf5'];
+path_pht = ['../../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_phantom.hdf5'];
 
 
 %-- Read the corresponding dataset and the region where to reconstruct the image
@@ -71,7 +71,7 @@ for k=1:length(pht.occlusionDiameter)
     r = pht.occlusionDiameter(k) / 2;
     xc = pht.occlusionCenterX(k);
     zc = pht.occlusionCenterZ(k);
-    maskOcclusion{k} = ( ((x-xc).^2 + (z-zc).^2) <= r^2);
+    maskOcclusion{k} = ( (abs(x-xc) <= sqrt(2)*r) & abs(z-zc) <= sqrt(2)*r);
     
     x_dash = pht.occlusionCenterX;
     x_dash(k) = []; 
@@ -83,7 +83,7 @@ for k=1:length(pht.occlusionDiameter)
     % Apply mask for all 8 circles
     for i = 1:length(x_dash)
         maskInterference{k} = maskInterference{k} | ...
-            ((x - x_dash(i)).^2 + (z - z_dash(i)).^2 <= r^2);
+            (abs(x - x_dash(i)) <= sqrt(2)*r & abs(z - z_dash(i)) <= sqrt(2)*r);
     end
 
     figure();
@@ -97,7 +97,8 @@ for k=1:length(pht.occlusionDiameter)
     title('Occlusion %2d', k);
     % saveas(gcf, ['Results/Count_Weight_Anglewise2/', num2str(k), '/','mask_interference.jpg'])
 end
-figure(); imshow(maskOcclusion{k} | maskInterference{k}); saveas(gcf, 'Results/Count_Weight_Anglewise2/mask_full.png');
+figure(); imshow(maskOcclusion{k} | maskInterference{k}); 
+% saveas(gcf, 'Results/Count_Weight_Anglewise2/mask_full.png');
 % counts = cell(1,9);
 % weights = cell(1,9);
 angles = linspace(-16, 16, 75);

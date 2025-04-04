@@ -59,12 +59,12 @@ function image = das_iq_original(scan,dataset,arr) %, path_reconstruted_img, pat
     image.receive_f_number = rx_f_number;
     image.transmit_apodization_window = 'none';
     image.receive_apodization_window = 'Tukey 25%';
-    path_image = ['Results/Paper_sampling_strategy/Reference/all.jpg'];
-    dynamic_range = 60;
-    image.show(dynamic_range);
+    % path_image = ['Results/Paper_sampling_strategy/Reference/all.jpg'];
+    % dynamic_range = 60;
+    % image.show(dynamic_range);
 
-    saveas(gcf, path_image);
-    path_reconstructed_image = ['Results/Paper_sampling_strategy/Reference/all.hdf5'];
+    % saveas(gcf, path_image);
+    % path_reconstructed_image = ['Results/Paper_sampling_strategy/Reference/all.hdf5'];
     % -- Save results
-    image.write_file(path_reconstructed_image);
+    % image.write_file(path_reconstructed_image);
 end

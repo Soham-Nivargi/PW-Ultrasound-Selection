@@ -5,7 +5,7 @@
 
 #BONUS-C15 
 
-Mean contrast scores (dB): 12.30 
+Mean contrast scores (dB): 12.30
 
 Left column targets 
 10.60

@@ -21,8 +21,8 @@ addpath(genpath('../src'));
 
 
 %-- Parameters
-acquisition_type = 1;       %-- 1 = simulation || 2 = experiments
-phantom_type = 2;           %-- 1 = resolution & distorsion || 2 = contrast & speckle quality
+acquisition_type = 2;       %-- 1 = simulation || 2 = experiments
+phantom_type = 1;           %-- 1 = resolution & distorsion || 2 = contrast & speckle quality
 data_type = 1;              %-- 1 = IQ || 2 = RF
 flag_display = 0;
 
@@ -36,7 +36,7 @@ switch acquisition_type
         acquisition = 'experiments';
         acqui = 'expe';
         flag_simu = 0;
-    otherwise       %-- Do deal with bad values
+    otherwise       
         acquisition = 'simulation';
         acqui = 'simu';
         flag_simu = 1;
@@ -58,12 +58,13 @@ switch data_type
         data = 'iq';        
 end
 
-K = 2;
 %-- Create path to load corresponding files
 path_dataset = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_dataset_',data,'.hdf5'];
 path_scan = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_scan.hdf5'];
 path_pht = ['../../database/',acquisition,'/',phantom,'/',phantom,'_',acqui,'_phantom.hdf5'];
 
+path_dataset = '../../database/carotid_cross/carotid_cross_expe_dataset_iq.hdf5';
+path_scan = '../../database/carotid_cross/carotid_cross_expe_scan.hdf5';
 
 %-- Read the corresponding dataset and the region where to reconstruct the image
 dataset = us_dataset();
@@ -95,13 +96,14 @@ pht.read_file(path_pht);
         case 1
             % disp(arr{i});
             % image1 = das_iq_windowed(scan,dataset,pw_indices, path_scan, path_pht, flag_simu, flag_display);
-            % image2 = das_iq_original(scan,dataset);
+            % image2 = das_iq_original(scan,dataset, pw_indices);
             image3 = das_iq_trial_windowing(scan, pht, dataset, pw_indices);
         case 2
             image = das_rf(scan,dataset,pw_indices);
         otherwise       %-- Do deal with bad values
             image = das_iq(scan,dataset,pw_indices);       
     end
+    image2.show();
     pht = us_phantom();
     pht.read_file(path_pht);
     % tools.exec_evaluation_contrast_speckle(path_scan,path_pht,'Results/Paper_sampling_strategy/Reference/all.hdf5',flag_simu,flag_display,'Results/Paper_sampling_strategy/Reference/all.txt');

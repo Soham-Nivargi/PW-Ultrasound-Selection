@@ -168,7 +168,7 @@ classdef us_image < handle
                     set(gca,'YDir','reverse');
                     set(gca,'fontsize',16);
                     axis([x_lim z_lim]);
-                    title(sprintf('%s\n %d plane waves',char(h.name),h.number_plane_waves(f)));
+                    title('(a)', FontSize=28);
                     drawnow; hold off;
                     pause(0.5);
                     
